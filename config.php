@@ -45,7 +45,7 @@ class Config
     static $actionsDefault = [
         ['name' => 'GoTawNet', 'text' => 'TAW', 'url' => 'http://www.taw.net'],
         ['name' => 'GoTawDcsOrg', 'text' => 'TAWDCS', 'url' => 'https://tawdcs.org/'],
-        ['name' => 'GoBriefings', 'text' => 'Briefings', 'url' => 'https://tawdcs.org/category/briefings/'],
+        ['name' => 'GoKO', 'text' => 'Kaucasus Offensive', 'url' => 'http://ko.tawdcs.org/'],
         ['name' => 'GoMembersSection', 'text' => 'Members Section', 'url' => 'https://tawdcs.org/sop/'],
         ['name' => 'GoSrsFreqs', 'text' => 'SRS Frequencies', 'url' => 'https://docs.google.com/document/d/1U4fe7EhdJ73F2ojMsXt7yOFxAoHd8OIH1Iv6OuPTSuc/edit']
     ];
