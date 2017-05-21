@@ -20,7 +20,7 @@ class Config
         'bot_channel' => 'C5ESAU8CF'
     ];
     static $messageTemplates = [
-        'newUserMessageTemplate' => "Welcome,  <@%s>! I hope you'll find lots of fun times playing with us!\nBut please, check <https://docs.google.com/document/d/1bfEh4NK2_rFzHyyOOVYdtF3regJMhcmlSaaKHoCLm98/edit|this document> first, in order to setup your profile accordingly to our standarts!\nHave fun!",
+        'newUserMessageTemplate' => "Welcome,  <@%s>! I hope you'll find lots of fun times playing with us!\nBut please, check <https://docs.google.com/document/d/1KNM5OzEwtb7Dkgpsq-Hse4tTMcP0KMVFY1xk71s3prA|this document> first, in order to setup your profile accordingly to our standarts!\nHave fun!",
         'warnMessageToAnnounce' => "Non-admin user <@%s> attempted to write a message in #announcements. Time: <!date^%s^{date_num} {time_secs}|Could Not Parse>. Message: \n>>> %s",
         'warnMessageToAnnouncePrivate' => ":no_entry_sign: Sorry, you have no rights to post in #announcements!\nIf you want to comment somehow, either start a sub-thread, or write in #general.\nYour message was:\n>>> %s"
     ];
@@ -43,18 +43,50 @@ class Config
      */
 
     static $actionsDefault = [
-        ['name' => 'GoToTawNet', 'text' => 'TAW Page', 'url' => 'http://www.taw.net']
+        ['name' => 'GoTawNet', 'text' => 'TAW', 'url' => 'http://www.taw.net'],
+        ['name' => 'GoTawDcsOrg', 'text' => 'TAWDCS', 'url' => 'https://tawdcs.org/'],
+        ['name' => 'GoBriefings', 'text' => 'Briefings', 'url' => 'https://tawdcs.org/category/briefings/'],
+        ['name' => 'GoMembersSection', 'text' => 'Members Section', 'url' => 'https://tawdcs.org/sop/'],
+        ['name' => 'GoSrsFreqs', 'text' => 'SRS Frequencies', 'url' => 'https://docs.google.com/document/d/1U4fe7EhdJ73F2ojMsXt7yOFxAoHd8OIH1Iv6OuPTSuc/edit']
     ];
     static $actionsForRoles = [
+        // ----------------------
         'SL' => [
-            ['name' => 'SL1', 'text' => 'sl 1', 'url' => 'http://www.sl1.net'],
-            ['name' => 'SL2', 'text' => 'sl 2', 'url' => 'http://www.2l2.net']
-            ],
-        'DI' => [
-            ['name' => 'di', 'text' => 'di', 'url' => 'http://www.di.net']
-            ],
-        'XO' => [
-            ['name' => 'xo', 'text' => 'xo stuff', 'url' => 'http://www.xoStuph.net']
+            ['name' => 'EventReporting', 'text' => 'Event Reporting', 'url' => 'http://taw.net/event/ReportEvent.aspx']
+        ],
+        'SL-EU' => [
+            ['name' => 'SlEuDoc', 'text' => 'SL EU Meeting Doc', 'url' => 'https://docs.google.com/document/d/1HEQsci_uNBZnQsvNYm8_0VGw6YCOjZcH2V18NNFM_l0/edit']
+        ],
+
+        // ----------------------
+        'PLF-EU' => [
+            ['name' => 'SlEuDoc', 'text' => 'SL EU Meeting Doc', 'url' => 'https://docs.google.com/document/d/1HEQsci_uNBZnQsvNYm8_0VGw6YCOjZcH2V18NNFM_l0/edit']
+        ],
+        'PLS-EU' => [
+            ['name' => 'SlEuDoc', 'text' => 'SL EU Meeting Doc', 'url' => 'https://docs.google.com/document/d/1HEQsci_uNBZnQsvNYm8_0VGw6YCOjZcH2V18NNFM_l0/edit']
+        ],
+        'PLR-EU' => [
+            ['name' => 'SlEuDoc', 'text' => 'SL EU Meeting Doc', 'url' => 'https://docs.google.com/document/d/1HEQsci_uNBZnQsvNYm8_0VGw6YCOjZcH2V18NNFM_l0/edit']
+        ],
+
+        // ----------------------
+        'FS-EU' => [
+            ['name' => 'SlEuDoc', 'text' => 'SL EU Meeting Doc', 'url' => 'https://docs.google.com/document/d/1HEQsci_uNBZnQsvNYm8_0VGw6YCOjZcH2V18NNFM_l0/edit']
+        ],
+
+        // ----------------------
+        'XO-EU' => [
+            ['name' => 'SlEuDoc', 'text' => 'SL EU Meeting Doc', 'url' => 'https://docs.google.com/document/d/1HEQsci_uNBZnQsvNYm8_0VGw6YCOjZcH2V18NNFM_l0/edit']
+        ],
+
+        // ----------------------
+        'CO-EU' => [
+            ['name' => 'SlEuDoc', 'text' => 'SL EU Meeting Doc', 'url' => 'https://docs.google.com/document/d/1HEQsci_uNBZnQsvNYm8_0VGw6YCOjZcH2V18NNFM_l0/edit']
+        ],
+
+        // ----------------------
+        'DC' => [
+            ['name' => 'SlEuDoc', 'text' => 'SL EU Meeting Doc', 'url' => 'https://docs.google.com/document/d/1HEQsci_uNBZnQsvNYm8_0VGw6YCOjZcH2V18NNFM_l0/edit']
         ]
     ];
 

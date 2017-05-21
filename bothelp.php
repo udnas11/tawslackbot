@@ -17,12 +17,13 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
 	{	
 		header('Content-Type: application/json');
 		$response['text'] = "Hi there, " . $user_name . ". How can I help you?";
-		
+
+		// NAVIGATIION: default user
+        $att = array();
 		$att['text'] = "Navigation";
 		$att['color'] = "#3AA3E3";
 		$att['attachment_type'] = "default";
 		$att['callback_id'] = "navigation";
-
 		$actions = array();
 
         foreach (Config::$actionsDefault as $roleAction)
@@ -31,12 +32,24 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
             $actions[] = (array)$button;//->ToArray();
 		}
 
+        $att['actions'] = $actions;
+        $response['attachments'][] = $att;
+
+		// NAVIGATION: position-specific
+        $att = array();
+        $att['text'] = "Position-specific navigation: ";
+        $att['color'] = "#3AA3E3";
+        $att['attachment_type'] = "default";
+        $att['callback_id'] = "navigation";
+        $actions = array();
+
 		$userInfo = TawSlack::getUserInfo($user_id);
         $userFirstName = $userInfo['profile']['first_name'];
         foreach (Config::$actionsForRoles as $role => $roleActions)
         {
             if (stripos($userFirstName, $role) !== false)
             {
+                $att['text'] .= $role.'; ';
                 foreach ($roleActions as $roleAction)
                 {
                     $button = new Button($roleAction['name'], $roleAction['text'], $roleAction['url']);
@@ -44,9 +57,9 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
                 }
             }
         }
-
         $att['actions'] = $actions;
-		$response['attachments'][] = $att;
+        if (count($actions) > 0)
+		    $response['attachments'][] = $att;
 
 		if ($userInfo['is_admin'])
         {
