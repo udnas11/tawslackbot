@@ -17,7 +17,7 @@ class Config
         'announce' => 'C208Z2N4F',
         'general' => 'C1SHP4Y4A',
         'welcome' => 'C2021K9FA',
-        'bot_channel' => 'C5GEXM3DZ'
+        'bot_channel' => 'G20JEKWJU'
     ];
     static $messageTemplates = [
         'newUserMessageTemplate' => "Welcome,  <@%s>! I hope you'll find lots of fun times playing with us!\nBut please, check <https://docs.google.com/document/d/1KNM5OzEwtb7Dkgpsq-Hse4tTMcP0KMVFY1xk71s3prA|this document> first, in order to setup your profile accordingly to our standarts!\nHave fun!",
