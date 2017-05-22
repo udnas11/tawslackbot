@@ -13,6 +13,10 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
 
     $input = json_decode($jsonInput, true);
 
+    $output['challenge'] = $input['challenge'];
+    echo json_encode($output);
+
+    /*
 	$event = $input['event'];
 	$eventTime = $input['event_time'];
 	$type = $event['type'];
@@ -67,4 +71,5 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
             }
         }
 	}
+    */
 }
