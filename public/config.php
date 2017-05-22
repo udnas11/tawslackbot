@@ -14,10 +14,10 @@ class Config
     static $tokenKey = 'TAWSLACKBOT_TOKEN';
     static $apiUrl = 'https://slack.com/api';
     static $channelIds = [
-        'announce' => 'C5E4ZRYJZ',
-        'general' => 'C4PF84T6F',
-        'welcome' => 'C4Q962Q31', 
-        'bot_channel' => 'C5ESAU8CF'
+        'announce' => 'C208Z2N4F',
+        'general' => 'C1SHP4Y4A',
+        'welcome' => 'C2021K9FA',
+        'bot_channel' => 'C5GEXM3DZ'
     ];
     static $messageTemplates = [
         'newUserMessageTemplate' => "Welcome,  <@%s>! I hope you'll find lots of fun times playing with us!\nBut please, check <https://docs.google.com/document/d/1KNM5OzEwtb7Dkgpsq-Hse4tTMcP0KMVFY1xk71s3prA|this document> first, in order to setup your profile accordingly to our standarts!\nHave fun!",
