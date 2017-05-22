@@ -1,4 +1,4 @@
-/logs
+public/logs
 /vendor
 /.idea
-config.json
+public/config.json
