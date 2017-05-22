@@ -12,11 +12,11 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
     TawSlack::log($jsonInput, 'Event');
 
     $input = json_decode($jsonInput, true);
-
+/*
     $output['challenge'] = $input['challenge'];
     echo json_encode($output);
+*/
 
-    /*
 	$event = $input['event'];
 	$eventTime = $input['event_time'];
 	$type = $event['type'];
@@ -38,10 +38,10 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
 		}
 	}
 	elseif (isset($user))
-	{
-		if ($channel == Config::$channelIds['announce'] && isset($event['thread_ts']) == false) //general/announce
-		{
-		    //check if user is admin
+    {
+        if ($channel == Config::$channelIds['announce'] && isset($event['thread_ts']) == false) //general/announce
+        {
+            //check if user is admin
             $isAdmin = TawSlack::isUserAdmin($user);
             if ($isAdmin == false)
             {
@@ -49,7 +49,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
                 TawSlack::sendWarnMessageAttemptAnnounce($user, $text, $eventTime);
                 TawSlack::sendMessageToChannel(sprintf(Config::$messageTemplates['warnMessageToAnnouncePrivate'], $text), $user);
             }
-		}
+        }
         if ($channel == Config::$channelIds['general'])
         {
             TawSlack::log("messageTS: " . $timeStamp . "; currentTS: " . time(), 'TIME');
@@ -70,6 +70,5 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
                 }
             }
         }
-	}
-    */
+    }
 }
