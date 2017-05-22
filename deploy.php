@@ -7,8 +7,8 @@ require 'recipe/common.php';
 
 set('repository', 'git@github.com:udnas11/tawslackbot.git');
 set('git_tty', false); // [Optional] Allocate tty for git on first deployment
-set('shared_files', ['config.json']);
-set('shared_dirs', ['logs']);
+set('shared_files', ['public/config.json']);
+set('shared_dirs', ['public/logs']);
 set('writable_dirs', []);
 set('allow_anonymous_stats', false);
 
