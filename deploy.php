@@ -18,7 +18,8 @@ set('ssh_multiplexing', false);
 
 host('tawdcs.org')->user('dev')
     ->stage('production')
-    ->set('deploy_path', '/home/dev/projects-www/tawslackbot');
+	->set('deploy_path', '/home/dev/projects-www/api.tawdcs.org');
+//    ->set('deploy_path', '/home/dev/projects-www/tawslackbot');
     
 //host('beta.project.com')
 //    ->stage('beta')
