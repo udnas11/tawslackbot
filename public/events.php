@@ -9,7 +9,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
 	http_response_code(200);
 
 	$jsonInput = file_get_contents('php://input');
-    TawSlack::log($jsonInput, 'Event');
+    //TawSlack::log($jsonInput, 'Event');
 
     $input = json_decode($jsonInput, true);
 /*
