@@ -154,7 +154,8 @@ class TawSlack
             foreach ($filesToDelete as $key => $fileId)
             {
                 TawSlack::log('Deletion in progress: ' . $key . '/' . $fileCountToDelete, 'FileDelete', 'log_fileDelete.txt');
-                TawSlack::deleteFile($fileId);
+                $response = TawSlack::deleteFile($fileId);
+                TawSlack::log('Response: '. json_encode($response), 'FileDelete', 'log_fileDelete.txt');
             }
             TawSlack::log('Done', 'FileDelete', 'log_fileDelete.txt');
             TawSlack::sendMessageToChannel('Done.', Config::$channelIds['bot_channel']);
