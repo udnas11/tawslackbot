@@ -52,41 +52,71 @@ class Config
     static $actionsForRoles = [
         // ----------------------
         'SL' => [
-            ['name' => 'EventReporting', 'text' => 'Event Reporting', 'url' => 'http://taw.net/event/ReportEvent.aspx']
+            ['name' => 'EventReporting', 'text' => 'Event Reporting', 'url' => 'http://taw.net/event/ReportEvent.aspx'],
+            ['name' => 'TawDocs', 'text' => 'Taw General Folder', 'url' => 'https://drive.google.com/drive/u/1/folders/0BwdUUxV9p95AfjBrT0ExWTFsZjdCTl9oZW5yUmVweTJlNUg4MlVoZDQzX0ExTkt3eVdYd1E']
         ],
         'SL-EU' => [
             ['name' => 'SlEuDoc', 'text' => 'SL EU Meeting Doc', 'url' => 'https://docs.google.com/document/d/1HEQsci_uNBZnQsvNYm8_0VGw6YCOjZcH2V18NNFM_l0/edit']
         ],
 
         // ----------------------
+        'PLF' => [
+            ['name' => 'SlEuDoc', 'text' => 'SL EU Meeting Doc', 'url' => 'https://docs.google.com/document/d/1HEQsci_uNBZnQsvNYm8_0VGw6YCOjZcH2V18NNFM_l0/edit'],
+            ['name' => 'TawDocs', 'text' => 'Taw General Folder', 'url' => 'https://drive.google.com/drive/u/1/folders/0BwdUUxV9p95AfjBrT0ExWTFsZjdCTl9oZW5yUmVweTJlNUg4MlVoZDQzX0ExTkt3eVdYd1E']
+        ],
         'PLF-EU' => [
             ['name' => 'SlEuDoc', 'text' => 'SL EU Meeting Doc', 'url' => 'https://docs.google.com/document/d/1HEQsci_uNBZnQsvNYm8_0VGw6YCOjZcH2V18NNFM_l0/edit']
         ],
+        'PLS' => [
+            ['name' => 'SlEuDoc', 'text' => 'SL EU Meeting Doc', 'url' => 'https://docs.google.com/document/d/1HEQsci_uNBZnQsvNYm8_0VGw6YCOjZcH2V18NNFM_l0/edit'],
+            ['name' => 'TawDocs', 'text' => 'Taw General Folder', 'url' => 'https://drive.google.com/drive/u/1/folders/0BwdUUxV9p95AfjBrT0ExWTFsZjdCTl9oZW5yUmVweTJlNUg4MlVoZDQzX0ExTkt3eVdYd1E']
+        ],
         'PLS-EU' => [
             ['name' => 'SlEuDoc', 'text' => 'SL EU Meeting Doc', 'url' => 'https://docs.google.com/document/d/1HEQsci_uNBZnQsvNYm8_0VGw6YCOjZcH2V18NNFM_l0/edit']
+        ],
+        'PLR' => [
+            ['name' => 'SlEuDoc', 'text' => 'SL EU Meeting Doc', 'url' => 'https://docs.google.com/document/d/1HEQsci_uNBZnQsvNYm8_0VGw6YCOjZcH2V18NNFM_l0/edit'],
+            ['name' => 'TawDocs', 'text' => 'Taw General Folder', 'url' => 'https://drive.google.com/drive/u/1/folders/0BwdUUxV9p95AfjBrT0ExWTFsZjdCTl9oZW5yUmVweTJlNUg4MlVoZDQzX0ExTkt3eVdYd1E']
         ],
         'PLR-EU' => [
             ['name' => 'SlEuDoc', 'text' => 'SL EU Meeting Doc', 'url' => 'https://docs.google.com/document/d/1HEQsci_uNBZnQsvNYm8_0VGw6YCOjZcH2V18NNFM_l0/edit']
         ],
 
         // ----------------------
+        'FS' => [
+            ['name' => 'MissionDesignDoc', 'text' => 'Mission Design Doc', 'url' => 'https://drive.google.com/file/d/0B4-zjL-PCMuvc1lHUjhLZWxLRmM/view?usp=sharing']
+        ],
         'FS-EU' => [
             ['name' => 'SlEuDoc', 'text' => 'SL EU Meeting Doc', 'url' => 'https://docs.google.com/document/d/1HEQsci_uNBZnQsvNYm8_0VGw6YCOjZcH2V18NNFM_l0/edit']
         ],
 
         // ----------------------
+        'XO' => [
+            ['name' => 'TawDocs', 'text' => 'Taw General Folder', 'url' => 'https://drive.google.com/drive/u/1/folders/0BwdUUxV9p95AfjBrT0ExWTFsZjdCTl9oZW5yUmVweTJlNUg4MlVoZDQzX0ExTkt3eVdYd1E']
+        ],
         'XO-EU' => [
-            ['name' => 'SlEuDoc', 'text' => 'SL EU Meeting Doc', 'url' => 'https://docs.google.com/document/d/1HEQsci_uNBZnQsvNYm8_0VGw6YCOjZcH2V18NNFM_l0/edit']
+            ['name' => 'SlEuDoc', 'text' => 'SL EU Meeting Doc', 'url' => 'https://docs.google.com/document/d/1HEQsci_uNBZnQsvNYm8_0VGw6YCOjZcH2V18NNFM_l0/edit'],
+            ['name' => 'XoEuRoster', 'text' => 'XO EU Roster Doc', 'url' => 'https://docs.google.com/spreadsheets/d/14u6v5BJoSroLy0U7QDz2z0IYySbYNT0OpLwe62cteUE/edit#gid=0'],
+            ['name' => 'SlBadges', 'text' => 'SL Badges Doc', 'url' => 'https://docs.google.com/spreadsheets/d/1uyLc6sVwcJnxF9ENj0EjazpsGw8ApBwaDhOF3l6b-WU/edit#gid=459234376']
         ],
 
         // ----------------------
+        'CO' => [
+            ['name' => 'SlEuDoc', 'text' => 'SL EU Meeting Doc', 'url' => 'https://docs.google.com/document/d/1HEQsci_uNBZnQsvNYm8_0VGw6YCOjZcH2V18NNFM_l0/edit'],
+            ['name' => 'TawDocs', 'text' => 'Taw General Folder', 'url' => 'https://drive.google.com/drive/u/1/folders/0BwdUUxV9p95AfjBrT0ExWTFsZjdCTl9oZW5yUmVweTJlNUg4MlVoZDQzX0ExTkt3eVdYd1E']
+        ],
         'CO-EU' => [
-            ['name' => 'SlEuDoc', 'text' => 'SL EU Meeting Doc', 'url' => 'https://docs.google.com/document/d/1HEQsci_uNBZnQsvNYm8_0VGw6YCOjZcH2V18NNFM_l0/edit']
+            ['name' => 'SlEuDoc', 'text' => 'SL EU Meeting Doc', 'url' => 'https://docs.google.com/document/d/1HEQsci_uNBZnQsvNYm8_0VGw6YCOjZcH2V18NNFM_l0/edit'],
+            ['name' => 'TawAcademyDrive', 'text' => 'Taw Academy Docs', 'url' => 'https://drive.google.com/drive/folders/0B9KA0xZYKRz7NmFYOVhMekh3U0E']
         ],
 
         // ----------------------
         'DC' => [
-            ['name' => 'SlEuDoc', 'text' => 'SL EU Meeting Doc', 'url' => 'https://docs.google.com/document/d/1HEQsci_uNBZnQsvNYm8_0VGw6YCOjZcH2V18NNFM_l0/edit']
+            ['name' => 'TawDocs', 'text' => 'Taw General Folder', 'url' => 'https://drive.google.com/drive/u/1/folders/0BwdUUxV9p95AfjBrT0ExWTFsZjdCTl9oZW5yUmVweTJlNUg4MlVoZDQzX0ExTkt3eVdYd1E'],
+            ['name' => 'SlEuDoc', 'text' => 'SL EU Meeting Doc', 'url' => 'https://docs.google.com/document/d/1HEQsci_uNBZnQsvNYm8_0VGw6YCOjZcH2V18NNFM_l0/edit'],
+            ['name' => 'XoEuRoster', 'text' => 'XO EU Roster Doc', 'url' => 'https://docs.google.com/spreadsheets/d/14u6v5BJoSroLy0U7QDz2z0IYySbYNT0OpLwe62cteUE/edit#gid=0'],
+            ['name' => 'SlBadges', 'text' => 'SL Badges Doc', 'url' => 'https://docs.google.com/spreadsheets/d/1uyLc6sVwcJnxF9ENj0EjazpsGw8ApBwaDhOF3l6b-WU/edit#gid=459234376'],
+            ['name' => 'TawAcademyDrive', 'text' => 'Taw Academy Docs', 'url' => 'https://drive.google.com/drive/folders/0B9KA0xZYKRz7NmFYOVhMekh3U0E']
         ]
     ];
 
