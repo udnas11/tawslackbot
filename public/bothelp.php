@@ -66,7 +66,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
         {
             $cleanupEnabled = Config::GetConfig()->cleanUpFiles;
 
-            $attAdmin['text'] = "Admin:\nFile scheduled clean-up is " . ($cleanupEnabled ? 'enabled.' : 'disabled.');
+            $attAdmin['text'] = "Admin:\nFile scheduled clean-up is " . (($cleanupEnabled ? "enabled." : "disabled.") . "\nIf you run forced clean-up, it will most likely answer you directly with an error. Ignore that. Look in #slackadmins channel instead for the result.");
             $attAdmin['color'] = "#3AA3E3";
             $attAdmin['attachment_type'] = "default";
             $attAdmin['callback_id'] = "admin";

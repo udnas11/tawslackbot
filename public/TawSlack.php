@@ -132,6 +132,7 @@ class TawSlack
     static public function deleteOldFiles($minimumTimestampDelta)
     {
         TawSlack::log('Attempt delete files older than ' . $minimumTimestampDelta . ' seconds', 'FileDelete', 'log_fileDelete.txt');
+        TawSlack::sendMessageToChannel('Running scheduled file clean-up.', Config::$channelIds['bot_channel']);
         $fileList = self::getFileList();
         if ($fileList != false)
         {
@@ -148,6 +149,7 @@ class TawSlack
             }
 
             $fileCountToDelete = count($filesToDelete);
+            TawSlack::sendMessageToChannel('Files to delete count / Total files count: ' . $fileCountToDelete . '/' . $fileCountTotal, Config::$channelIds['bot_channel']);
             TawSlack::log('Files to delete: ' . $fileCountToDelete . '/' . $fileCountTotal, 'FileDelete', 'log_fileDelete.txt');
             foreach ($filesToDelete as $key => $fileId)
             {
@@ -155,9 +157,11 @@ class TawSlack
                 TawSlack::deleteFile($fileId);
             }
             TawSlack::log('Done', 'FileDelete', 'log_fileDelete.txt');
+            TawSlack::sendMessageToChannel('Done.', Config::$channelIds['bot_channel']);
             return true;
         }
         TawSlack::log('No file list to delete.', 'FileDelete', 'log_fileDelete.txt');
+        TawSlack::sendMessageToChannel('Could not get file list for deletion.', Config::$channelIds['bot_channel']);
         return false;
     }
 }

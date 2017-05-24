@@ -17,7 +17,7 @@ class Config
         'announce' => 'C208Z2N4F',
         'general' => 'C1SHP4Y4A',
         'welcome' => 'C2021K9FA',
-        'bot_channel' => 'G20JEKWJU'
+        'bot_channel' => 'G20JEKWJU'//'C5ESAU8CF'
     ];
     static $messageTemplates = [
         'newUserMessageTemplate' => "Welcome,  <@%s>! I hope you'll find lots of fun times playing with us!\nBut please, check <https://docs.google.com/document/d/1KNM5OzEwtb7Dkgpsq-Hse4tTMcP0KMVFY1xk71s3prA|this document> first, in order to setup your profile accordingly to our standarts!\nHave fun!",
@@ -33,14 +33,6 @@ class Config
         'No, <@%2$s>, no.. now that\'s a bad word! We don\'t use %1$s in this house!',
         //todo "At least BMS has good missiles" for bms only
     ];
-
-    /*
-     * $button["name"] = "GoTawReportEvent";
-		$button["text"] = "Report Event";
-		$button["type"] = "button";
-		$button["value"] = "http://taw.net/event/ReportEvent.aspx";
-		$att["actions"][] = $button;
-     */
 
     static $actionsDefault = [
         ['name' => 'GoTawNet', 'text' => 'TAW', 'url' => 'http://www.taw.net'],
