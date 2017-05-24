@@ -61,6 +61,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
         if (count($actions) > 0)
 		    $response['attachments'][] = $att;
 
+        // ADMIN STUFF
 		if ($userInfo['is_admin'])
         {
             $cleanupEnabled = Config::GetConfig()->cleanUpFiles;
@@ -75,7 +76,10 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
                 $button = new Button('setCleanupFiles', 'Disable Cleanup', 'false');
             else
                 $button = new Button('setCleanupFiles', 'Enable Cleanup', 'true');
-            $actions[] = (array)$button;//->ToArray();
+            $actions[] = (array)$button;
+
+            $button = new Button('runCleanupNow', 'Run Cleanup Now', '1');
+            $actions[] = (array)$button;
 
             $attAdmin['actions'] = $actions;
             $response['attachments'][] = $attAdmin;

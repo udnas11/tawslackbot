@@ -21,6 +21,9 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
         $action = $input['actions'][0];
         $actionName = $action['name'];
 
+        $userInfo = $input['user'];
+        $userName = $userInfo['name'];
+
         if ($actionName == 'setCleanupFiles')
         {
             $newVal = $action['value'] === 'true';
@@ -28,6 +31,12 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
             Config::GetConfig()->cleanUpFiles = $newVal;
             Config::FlushConfig();
             echo $newVal ? 'Enabled' : 'Disabled'; // send the response
+        }
+        elseif ($actionName == 'runCleanupNow')
+        {
+            TawSlack::log('Running forced clean-up! caller: '.$userName, 'FileDelete', 'log_fileDelete.txt');
+            TawSlack::deleteOldFiles(60*60*24);
+            echo 'Done clean-up';
         }
     }
 }
