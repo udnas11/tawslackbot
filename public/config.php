@@ -17,7 +17,8 @@ class Config
         'announce' => 'C208Z2N4F',
         'general' => 'C1SHP4Y4A',
         'welcome' => 'C2021K9FA',
-        'bot_channel' => 'G20JEKWJU'//'C5ESAU8CF'
+        'bot_channel' => 'G20JEKWJU' // production
+        //'bot_channel' => 'C5ESAU8CF' // test
     ];
     static $messageTemplates = [
         'newUserMessageTemplate' => "Welcome,  <@%s>! I hope you'll find lots of fun times playing with us!\nBut please, check <https://docs.google.com/document/d/1KNM5OzEwtb7Dkgpsq-Hse4tTMcP0KMVFY1xk71s3prA|this document> first, in order to setup your profile accordingly to our standarts!\nHave fun!",
@@ -25,7 +26,7 @@ class Config
         'warnMessageToAnnouncePrivate' => ":no_entry_sign: Sorry, you have no rights to post in #announcements!\nIf you want to comment somehow, either start a sub-thread, or write in #general.\nYour message was:\n>>> %s"
     ];
     static $disgustInterval = 60 * 60; // 60m = 60s * 60;
-    static $disgustTitles = ['War Thunder', ' BMS', 'Ace Combat', 'WarThunder', 'World of Warplanes'];
+    static $disgustTitles = ['War Thunder', 'BMS', 'Ace Combat', 'WarThunder', 'World of Warplanes', 'HAWX'];
     static $messageTemplatesDisgust = [
         'I am disgusted! How dare you mention %1$s?!?',
         'You have sinned, <@%2$s>! %1$s is Devil\'s work! Go play DCS for at least 2 hours to purge your soul!',

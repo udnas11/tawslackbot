@@ -112,16 +112,71 @@ class TawSlack
         self::callSlackMethod('chat.delete', ['ts' => $ts, 'author' => $author, 'channel' => $channel]);
     }
 
-    static public function getFileList()
+    static public function getChannelList()
     {
-        $response = self::callSlackMethod('files.list');
+        $response = self::callSlackMethod('channels.list');
         if ($response != false && $response['ok'] == true)
         {
-            TawSlack::log('Found ' . count($response['files']), 'GetFileList');
-            return $response['files'];
+            $channels = $response['channels'];
+            $channelIds = array();
+            foreach ($channels as $channelInfo)
+                $channelIds[] = $channelInfo['id'];
+            return $channelIds;
+        }
+        return false;
+    }
+
+    static public function getFilesListChannel($minimumTimestampDelta, $channelId = null)
+    {
+        if ($channelId === null)
+            $response = self::callSlackMethod('files.list');
+        else
+            $response = self::callSlackMethod('files.list', ['channel' => $channelId]);
+
+        if ($response != false && $response['ok'] == true)
+        {
+            $files = $response['files'];
+            $fileIds = array();
+            $currentTimeStamp = time();
+            foreach ($files as $fileInfo)
+            {
+                $fileTimestamp = $fileInfo['timestamp'];
+                if ($currentTimeStamp - $fileTimestamp > $minimumTimestampDelta)
+                {
+                    $fileIds[] = $fileInfo['id'];
+                    TawSlack::log('Adding file to list: ' . $fileInfo['id'] . '; channel: ' . $channelId, 'FileDelete', 'log_fileDelete.txt');
+                }
+                else
+                    TawSlack::log('Timestamp not good file: ' . $fileInfo['id'] . '; channel: ' . $channelId, 'FileDelete', 'log_fileDelete.txt');
+            }
+            return $fileIds;
+        }
+        return false;
+    }
+
+    static public function getFileListTotal($minimumTimestampDelta)
+    {
+        $channelIds = self::getChannelList();
+        $fileIds = array();
+
+        foreach ($channelIds as $channelId)
+        {
+            $filesInChannel = self::getFilesListChannel($minimumTimestampDelta, $channelId);
+            if ($filesInChannel != false)
+                $fileIds = array_merge($fileIds, $filesInChannel);
         }
 
-        return false;
+        $filesInChannel = self::getFilesListChannel($minimumTimestampDelta, null);
+        if ($filesInChannel != false)
+            $fileIds = array_merge($fileIds, $filesInChannel);
+
+        $fileIds = array_unique($fileIds);
+
+        /*TawSlack::log('Enumerating unique files:', 'FileDelete', 'log_fileDelete.txt');
+        foreach ($fileIds as $key => $val)
+            TawSlack::log('f: '.$key.'=>'.$val, 'FileDelete', 'log_fileDelete.txt');*/
+
+        return $fileIds;
     }
 
     static public function deleteFile($file)
@@ -133,37 +188,22 @@ class TawSlack
     {
         TawSlack::log('Attempt delete files older than ' . $minimumTimestampDelta . ' seconds', 'FileDelete', 'log_fileDelete.txt');
         TawSlack::sendMessageToChannel('Running scheduled file clean-up.', Config::$channelIds['bot_channel']);
-        $fileList = self::getFileList();
-        if ($fileList != false)
+
+        $fileIdList = self::getFileListTotal($minimumTimestampDelta);
+        $fileCountTotal = count($fileIdList);
+
+        TawSlack::sendMessageToChannel('Files to delete count: ' . $fileCountTotal, Config::$channelIds['bot_channel']);
+        TawSlack::log('Files to delete count: ' . $fileCountTotal, 'FileDelete', 'log_fileDelete.txt');
+
+        foreach ($fileIdList as $key => $fileId)
         {
-            $fileCountTotal = count($fileList);
-            $currentTimeStamp = time();
-            $filesToDelete = array();
-
-            foreach ($fileList as $fileInfo)
-            {
-                $fileId = $fileInfo['id'];
-                $fileTimestamp = $fileInfo['timestamp'];
-                if ($currentTimeStamp - $fileTimestamp > $minimumTimestampDelta)
-                    $filesToDelete[] = $fileId;
-            }
-
-            $fileCountToDelete = count($filesToDelete);
-            TawSlack::sendMessageToChannel('Files to delete count / Total files count: ' . $fileCountToDelete . '/' . $fileCountTotal, Config::$channelIds['bot_channel']);
-            TawSlack::log('Files to delete: ' . $fileCountToDelete . '/' . $fileCountTotal, 'FileDelete', 'log_fileDelete.txt');
-            foreach ($filesToDelete as $key => $fileId)
-            {
-                TawSlack::log('Deletion in progress: ' . $key . '/' . $fileCountToDelete, 'FileDelete', 'log_fileDelete.txt');
-                $response = TawSlack::deleteFile($fileId);
-                TawSlack::log('Response: '. json_encode($response), 'FileDelete', 'log_fileDelete.txt');
-            }
-            TawSlack::log('Done', 'FileDelete', 'log_fileDelete.txt');
-            TawSlack::sendMessageToChannel('Done.', Config::$channelIds['bot_channel']);
-            return true;
+            TawSlack::log('Deletion in progress: ' . $key . '/' . $fileCountTotal, 'FileDelete', 'log_fileDelete.txt');
+            $response = TawSlack::deleteFile($fileId);
+            TawSlack::log('Success: '. json_encode($response), 'FileDelete', 'log_fileDelete.txt');
         }
-        TawSlack::log('No file list to delete.', 'FileDelete', 'log_fileDelete.txt');
-        TawSlack::sendMessageToChannel('Could not get file list for deletion.', Config::$channelIds['bot_channel']);
-        return false;
+
+        TawSlack::log('Done', 'FileDelete', 'log_fileDelete.txt');
+        TawSlack::sendMessageToChannel('Done.', Config::$channelIds['bot_channel']);
     }
 }
 
