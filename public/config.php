@@ -40,18 +40,44 @@ class Config
         ['name' => 'GoTawDcsOrg', 'text' => 'TAWDCS', 'url' => 'https://tawdcs.org/'],
         ['name' => 'GoKO', 'text' => 'Kaucasus Offensive', 'url' => 'http://ko.tawdcs.org/'],
         ['name' => 'GoMembersSection', 'text' => 'Members Section', 'url' => 'https://tawdcs.org/sop/'],
-        ['name' => 'GoSrsFreqs', 'text' => 'SRS Frequencies', 'url' => 'https://docs.google.com/document/d/1U4fe7EhdJ73F2ojMsXt7yOFxAoHd8OIH1Iv6OuPTSuc/edit']
+        ['name' => 'GoSrsFreqs', 'text' => 'SRS Frequencies', 'url' => 'https://docs.google.com/document/d/1U4fe7EhdJ73F2ojMsXt7yOFxAoHd8OIH1Iv6OuPTSuc/edit'],
+        ['name' => 'MandatoryExcuse', 'text' => 'Excuse from Mandatory', 'url' => 'http://taw.net/events/default.aspx?u=3046&c=1']
     ];
-    static $actionsForRoles = [
-        // ----------------------
-        'SL' => [
-            ['name' => 'EventReporting', 'text' => 'Event Reporting', 'url' => 'http://taw.net/event/ReportEvent.aspx'],
-            ['name' => 'TawDocs', 'text' => 'Taw General Folder', 'url' => 'https://drive.google.com/drive/u/1/folders/0BwdUUxV9p95AfjBrT0ExWTFsZjdCTl9oZW5yUmVweTJlNUg4MlVoZDQzX0ExTkt3eVdYd1E']
-        ],
-        'SL-EU' => [
-            ['name' => 'SlEuDoc', 'text' => 'SL EU Meeting Doc', 'url' => 'https://docs.google.com/document/d/1HEQsci_uNBZnQsvNYm8_0VGw6YCOjZcH2V18NNFM_l0/edit']
-        ],
+    static $actionsDictionary = [
+        'EventReporting' => ['text' => 'Event Reporting', 'url' => 'http://taw.net/event/ReportEvent.aspx'],
+        'TawDocs' => ['text' => 'Taw GDrive General Folder', 'url' => 'https://drive.google.com/drive/u/1/folders/0BwdUUxV9p95AfjBrT0ExWTFsZjdCTl9oZW5yUmVweTJlNUg4MlVoZDQzX0ExTkt3eVdYd1E'],
+        'SlEuDoc' => ['text' => 'SL EU Meeting Doc', 'url' => 'https://docs.google.com/document/d/1HEQsci_uNBZnQsvNYm8_0VGw6YCOjZcH2V18NNFM_l0/edit'],
+        'MissionDesignDoc' => ['text' => 'TAW Mission Design Doc', 'url' => 'https://drive.google.com/file/d/0B4-zjL-PCMuvc1lHUjhLZWxLRmM/view?usp=sharing'],
+        'DcsScriptingWiki' => ['text' => 'DCS Scripting Wiki', 'url' => 'http://wiki.hoggit.us/view/Simulator_Scripting_Engine_Documentation'],
+        'MooseDocumentation' => ['text' => 'MOOSE Documentation', 'url' => 'http://flightcontrol-master.github.io/MOOSE/Documentation/index.html'],
+        'XoEuRoster' => ['text' => 'XO EU Roster Doc', 'url' => 'https://docs.google.com/spreadsheets/d/14u6v5BJoSroLy0U7QDz2z0IYySbYNT0OpLwe62cteUE/edit#gid=0'],
+        'SlBadges' => ['text' => 'SL Badges Doc', 'url' => 'https://docs.google.com/spreadsheets/d/1uyLc6sVwcJnxF9ENj0EjazpsGw8ApBwaDhOF3l6b-WU/edit#gid=459234376'],
+        'TawAcademyDrive' => ['text' => 'Taw Academy Docs', 'url' => 'https://drive.google.com/drive/folders/0B9KA0xZYKRz7NmFYOVhMekh3U0E']
+    ];
+    static $actionsPositions = [ //name from $actionsDictionary
+        'SL' => ['EventReporting', 'TawDocs'],
+        'SL-EU' => ['SlEuDoc'],
 
+        'PLF' => ['SlEuDoc', 'TawDocs'],
+        'PLF-EU' => ['SlEuDoc'],
+        'PLS' => ['SlEuDoc', 'TawDocs'],
+        'PLS-EU' => ['SlEuDoc'],
+        'PLR' => ['SlEuDoc', 'TawDocs'],
+        'PLR-EU' => ['SlEuDoc'],
+
+        'FS' => ['MissionDesignDoc', 'DcsScriptingWiki', 'MooseDocumentation'],
+        'FS-EU' => ['SlEuDoc'],
+
+        'XO' => ['TawDocs'],
+        'XO-EU' => ['SlEuDoc', 'XoEuRoster', 'SlBadges'],
+
+        'CO' => ['TawDocs', 'TawAcademyDrive'],
+        'CO-EU' => ['SlEuDoc'],
+
+        'DC' => ['SlEuDoc', 'TawDocs', 'XoEuRoster', 'SlBadges', 'TawAcademyDrive']
+    ];
+    /*
+    static $actionsForRoles = [
         // ----------------------
         'PLF' => [
             ['name' => 'SlEuDoc', 'text' => 'SL EU Meeting Doc', 'url' => 'https://docs.google.com/document/d/1HEQsci_uNBZnQsvNYm8_0VGw6YCOjZcH2V18NNFM_l0/edit'],
@@ -77,7 +103,9 @@ class Config
 
         // ----------------------
         'FS' => [
-            ['name' => 'MissionDesignDoc', 'text' => 'Mission Design Doc', 'url' => 'https://drive.google.com/file/d/0B4-zjL-PCMuvc1lHUjhLZWxLRmM/view?usp=sharing']
+            ['name' => 'MissionDesignDoc', 'text' => 'Mission Design Doc', 'url' => 'https://drive.google.com/file/d/0B4-zjL-PCMuvc1lHUjhLZWxLRmM/view?usp=sharing'],
+            ['name' => 'DcsScriptingWiki', 'text' => 'DCS Scripting Wiki', 'url' => 'http://wiki.hoggit.us/view/Simulator_Scripting_Engine_Documentation'],
+            ['name' => 'MooseDocumentation', 'text' => 'MOOSE Documentation', 'url' => 'http://flightcontrol-master.github.io/MOOSE/Documentation/index.html']
         ],
         'FS-EU' => [
             ['name' => 'SlEuDoc', 'text' => 'SL EU Meeting Doc', 'url' => 'https://docs.google.com/document/d/1HEQsci_uNBZnQsvNYm8_0VGw6YCOjZcH2V18NNFM_l0/edit']
@@ -111,7 +139,7 @@ class Config
             ['name' => 'SlBadges', 'text' => 'SL Badges Doc', 'url' => 'https://docs.google.com/spreadsheets/d/1uyLc6sVwcJnxF9ENj0EjazpsGw8ApBwaDhOF3l6b-WU/edit#gid=459234376'],
             ['name' => 'TawAcademyDrive', 'text' => 'Taw Academy Docs', 'url' => 'https://drive.google.com/drive/folders/0B9KA0xZYKRz7NmFYOVhMekh3U0E']
         ]
-    ];
+    ];*/
 
     public static function getToken()
     {

@@ -1,6 +1,7 @@
 <?php
 
 require_once "Controls/Button.php";
+require_once "Controls/NavUrl.php";
 require_once "config.php";
 require_once "TawSlack.php";
 
@@ -12,12 +13,32 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
 	$user_name = $_POST['user_name'];
 	$user_id = $_POST['user_id'];
 	$channel_id = $_POST['channel_id'];
+    $userInfo = TawSlack::getUserInfo($user_id);
+    $userFirstName = $userInfo['profile']['first_name'];
+    $userLastName = $userInfo['profile']['last_name'];
 	
 	if (isset($user_name))
 	{	
 		header('Content-Type: application/json');
-		$response['text'] = "Hi there, " . $user_name . ". How can I help you?";
+		$responseText = "Hi there, " . $userLastName . "!\nThere are a couple of links that you might find useful:\n";
+		$responseText .= GetNavUrlsGeneral();
+        $specialRole = false;
+        foreach (Config::$actionsPositions as $role => $actionKey)
+        {
+            if (stripos($userFirstName, $role) !== false)
+            {
+                if ($specialRole == false)
+                {
+                    $responseText .= "Also here are a few links specifically for your position in TAW: \n";
+                    $specialRole = true;
+                }
+                $responseText .= GetNavUrlsForPosition($role);
+            }
+        }
 
+		$response['text'] = $responseText;
+
+		/*
 		// NAVIGATIION: default user
         $att = array();
 		$att['text'] = "Navigation";
@@ -60,6 +81,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
         $att['actions'] = $actions;
         if (count($actions) > 0)
 		    $response['attachments'][] = $att;
+		*/
 
         // ADMIN STUFF
 		if ($userInfo['is_admin'])
@@ -84,6 +106,17 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
             $attAdmin['actions'] = $actions;
             $response['attachments'][] = $attAdmin;
         }
+
+        $attHide['text'] = "Hide this message:";
+        $attHide['color'] = "#3AA3E3";
+        $attHide['attachment_type'] = "default";
+        $attHide['callback_id'] = "collapse";
+
+        $actions = array();
+        $button = new Button('collapseMessage', 'Collapse', '1');
+        $actions[] = (array)$button;
+        $attHide['actions'] = $actions;
+        $response['attachments'][] = $attHide;
 
         TawSlack::log('send: ' . json_encode($response), 'BotHelp');
 		echo json_encode($response);

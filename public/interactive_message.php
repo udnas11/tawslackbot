@@ -40,4 +40,8 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
             echo 'Done clean-up';
         }
     }
+    elseif ($callback_id == 'collapse')
+    {
+        echo 'Bye';
+    }
 }

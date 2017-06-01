@@ -5,13 +5,6 @@
  * Date: 16-May-17
  * Time: 16:50
  */
-require_once "Base.php";
-
-/*		$button["name"] = "GoTawNet";
-		$button["text"] = "TAW Page";
-		$button["type"] = "button";
-		$button["value"] = "http://www.taw.net";
-		$att["actions"][] = $button;*/
 
 class Button
 {
