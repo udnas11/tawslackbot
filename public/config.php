@@ -21,7 +21,7 @@ class Config
         //'bot_channel' => 'C5ESAU8CF' // test
     ];
     static $messageTemplates = [
-        'newUserMessageTemplate' => "Welcome,  <@%s>! I hope you'll find lots of fun times playing with us!\nBut please, check <https://docs.google.com/document/d/1KNM5OzEwtb7Dkgpsq-Hse4tTMcP0KMVFY1xk71s3prA|this document> first, in order to setup your profile accordingly to our standarts!\nHave fun!",
+        'newUserMessageTemplate' => "Welcome, <@%s>! I hope you'll find lots of fun playing with us!\nBut please, check <https://docs.google.com/document/d/1KNM5OzEwtb7Dkgpsq-Hse4tTMcP0KMVFY1xk71s3prA|this document> first, in order to setup your profile according to our standards!\nHave fun!",
         'warnMessageToAnnounce' => "Non-admin user <@%s> attempted to write a message in #announcements. Time: <!date^%s^{date_num} {time_secs}|Could Not Parse>. Message: \n>>> %s",
         'warnMessageToAnnouncePrivate' => ":no_entry_sign: Sorry, you have no rights to post in #announcements!\nIf you want to comment somehow, either start a sub-thread, or write in #general.\nYour message was:\n>>> %s"
     ];
@@ -32,6 +32,7 @@ class Config
         'You have sinned, <@%2$s>! %1$s is Devil\'s work! Go play DCS for at least 2 hours to purge your soul!',
         '%1$s sucks, DCS da best!',
         'No, <@%2$s>, no.. now that\'s a bad word! We don\'t use %1$s in this house!',
+        'Well.. at least %1$s doesn\'t crash that often..'
         //todo "At least BMS has good missiles" for bms only
     ];
 
