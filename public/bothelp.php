@@ -35,6 +35,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
                 $responseText .= GetNavUrlsForPosition($role);
             }
         }
+		$responseText .= "Want something more to be included? Contact AlephRo for that.";
 
 		$response['text'] = $responseText;
 
