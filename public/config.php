@@ -53,7 +53,8 @@ class Config
         'MooseDocumentation' => ['text' => 'MOOSE Documentation', 'url' => 'http://flightcontrol-master.github.io/MOOSE/Documentation/index.html'],
         'XoEuRoster' => ['text' => 'XO EU Roster Doc', 'url' => 'https://docs.google.com/spreadsheets/d/14u6v5BJoSroLy0U7QDz2z0IYySbYNT0OpLwe62cteUE/edit#gid=0'],
         'SlBadges' => ['text' => 'SL Badges Doc', 'url' => 'https://docs.google.com/spreadsheets/d/1uyLc6sVwcJnxF9ENj0EjazpsGw8ApBwaDhOF3l6b-WU/edit#gid=459234376'],
-        'TawAcademyDrive' => ['text' => 'Taw Academy Docs', 'url' => 'https://drive.google.com/drive/folders/0B9KA0xZYKRz7NmFYOVhMekh3U0E']
+        'TawAcademyDrive' => ['text' => 'Taw Academy Docs', 'url' => 'https://drive.google.com/drive/folders/0B9KA0xZYKRz7NmFYOVhMekh3U0E'],
+        'BadgeDocTable' => ['text' => 'Badge Doc Table', 'url' => 'https://docs.google.com/spreadsheets/d/1T42d8ktyZ9EM6guqv5oPshuBBLMLRh66UCCAfLazs1U/edit#gid=0']
     ];
     static $actionsPositions = [ //name from $actionsDictionary
         'SL' => ['EventReporting', 'TawDocs'],
@@ -68,6 +69,9 @@ class Config
 
         'FS' => ['MissionDesignDoc', 'DcsScriptingWiki', 'MooseDocumentation'],
         'FS-EU' => ['SlEuDoc'],
+
+        'TS' => ['BadgeDocTable'],
+        'TS-EU' => ['SlEuDoc'],
 
         'XO' => ['TawDocs'],
         'XO-EU' => ['SlEuDoc', 'XoEuRoster', 'SlBadges'],
