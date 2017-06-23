@@ -53,7 +53,6 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
         }
         if ($channel == Config::$channelIds['general'])
         {
-            TawSlack::log("disgust: " . Config::GetConfig()->disgustResponsesEnabled, 'dsgst');
             if (Config::GetConfig()->disgustResponsesEnabled)
             {
                 foreach (Config::$disgustTitles as $title)
