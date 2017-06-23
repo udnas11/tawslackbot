@@ -24,11 +24,11 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
         $userInfo = $input['user'];
         $userName = $userInfo['name'];
 
-        if ($actionName == 'setCleanupFiles')
+        if ($actionName == 'setDisgustResponses')
         {
             $newVal = $action['value'] === 'true';
             TawSlack::log('newval: ' . $newVal);
-            Config::GetConfig()->cleanUpFiles = $newVal;
+            Config::GetConfig()->disgustResponsesEnabled = $newVal;
             Config::FlushConfig();
             echo $newVal ? 'Enabled' : 'Disabled'; // send the response
         }

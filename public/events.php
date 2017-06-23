@@ -53,21 +53,24 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
         }
         if ($channel == Config::$channelIds['general'])
         {
-            TawSlack::log("messageTS: " . $timeStamp . "; currentTS: " . time(), 'TIME');
-            foreach (Config::$disgustTitles as $title)
+            TawSlack::log("disgust: " . Config::GetConfig()->disgustResponsesEnabled, 'dsgst');
+            if (Config::GetConfig()->disgustResponsesEnabled)
             {
-                if (stripos($text, $title) !== false)
+                foreach (Config::$disgustTitles as $title)
                 {
-                    $deltaTimeStamp = $timeStamp - Config::GetConfig()->lastDisgustTS; // in seconds
-                    TawSlack::log('disgust delta: ' . $deltaTimeStamp . ' out of ' . Config::$disgustInterval, 'Disgust');
-                    if ($deltaTimeStamp > Config::$disgustInterval)
+                    if (stripos($text, $title) !== false)
                     {
-                        TawSlack::log("should disgust", 'Disgust');
-                        Config::GetConfig()->lastDisgustTS = $timeStamp;
-                        Config::FlushConfig();
-                        TawSlack::sendDisgustMessage($title, $user);
+                        $deltaTimeStamp = $timeStamp - Config::GetConfig()->lastDisgustTS; // in seconds
+                        TawSlack::log('disgust delta: ' . $deltaTimeStamp . ' out of ' . Config::$disgustInterval, 'Disgust');
+                        if ($deltaTimeStamp > Config::$disgustInterval)
+                        {
+                            TawSlack::log("should disgust", 'Disgust');
+                            Config::GetConfig()->lastDisgustTS = $timeStamp;
+                            Config::FlushConfig();
+                            TawSlack::sendDisgustMessage($title, $user);
+                        }
+                        break;
                     }
-                    break;
                 }
             }
         }

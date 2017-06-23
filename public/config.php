@@ -5,6 +5,7 @@ class CachedConfig
     public $lastDisgustTS = 0;
     public $lastDisgustIndex = -1;
     public $cleanUpFiles = true;
+    public $disgustResponsesEnabled = false;
 }
 
 class Config
@@ -15,7 +16,8 @@ class Config
     static $apiUrl = 'https://slack.com/api';
     static $channelIds = [
         'announce' => 'C208Z2N4F',
-        'general' => 'C1SHP4Y4A',
+        'general' => 'C1SHP4Y4A', // production
+        //'general' => 'C4PF84T6F', // test
         'welcome' => 'C2021K9FA',
         'bot_channel' => 'G20JEKWJU' // production
         //'bot_channel' => 'C5ESAU8CF' // test
@@ -26,11 +28,10 @@ class Config
         'warnMessageToAnnouncePrivate' => ":no_entry_sign: Sorry, you have no rights to post in #announcements!\nIf you want to comment somehow, either start a sub-thread, or write in #general.\nYour message was:\n>>> %s"
     ];
     static $disgustInterval = 60 * 60; // 60m = 60s * 60;
-    static $disgustTitles = ['War Thunder', 'BMS', 'Ace Combat', 'WarThunder', 'World of Warplanes', 'HAWX'];
+    static $disgustTitles = ['War Thunder', ' BMS', 'Ace Combat', 'WarThunder', 'World of Warplanes', 'HAWX'];
     static $messageTemplatesDisgust = [
         'I am disgusted! How dare you mention %1$s?!?',
         'You have sinned, <@%2$s>! %1$s is Devil\'s work! Go play DCS for at least 2 hours to purge your soul!',
-        '%1$s sucks, DCS da best!',
         'No, <@%2$s>, no.. now that\'s a bad word! We don\'t use %1$s in this house!',
         'Well.. at least %1$s doesn\'t crash that often..'
         //todo "At least BMS has good missiles" for bms only
@@ -169,7 +170,9 @@ class Config
             else
             {
                 TawSlack::log("file found, loading", 'Config');
-                self::$cache_config = json_decode($fileContents);
+                $assoc = json_decode($fileContents, true);
+                self::$cache_config = new CachedConfig();
+                foreach ($assoc as $key => $value) self::$cache_config->{$key} = $value;
             }
         }
         return self::$cache_config;
