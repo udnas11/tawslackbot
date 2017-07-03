@@ -61,11 +61,11 @@ class Config
         'SL' => ['EventReporting', 'TawDocs'],
         'SL-EU' => ['SlEuDoc'],
 
-        'PLF' => ['SlEuDoc', 'TawDocs'],
+        'PLF' => ['TawDocs'],
         'PLF-EU' => ['SlEuDoc'],
-        'PLS' => ['SlEuDoc', 'TawDocs'],
+        'PLS' => ['TawDocs'],
         'PLS-EU' => ['SlEuDoc'],
-        'PLR' => ['SlEuDoc', 'TawDocs'],
+        'PLR' => ['TawDocs'],
         'PLR-EU' => ['SlEuDoc'],
 
         'FS' => ['MissionDesignDoc', 'DcsScriptingWiki', 'MooseDocumentation'],
