@@ -121,6 +121,20 @@ class TawSlack
         }
     }
 
+    static public function getGroupInfo($channelId)
+    {
+        $channelInfo = self::callSlackMethod('groups.info', ['channel' => $channelId]);
+        if ($channelInfo['ok'])
+        {
+            $channelData = $channelInfo['group'];
+            return $channelData;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
     static public function deleteMessage($ts, $author, $channel)
     {
         self::callSlackMethod('chat.delete', ['ts' => $ts, 'author' => $author, 'channel' => $channel]);
