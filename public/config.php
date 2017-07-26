@@ -16,14 +16,18 @@ class Config
     static $apiUrl = 'https://slack.com/api';
     static $channelIds = [
         'announce' => 'C208Z2N4F',
+
         'general' => 'C1SHP4Y4A', // production
         //'general' => 'C4PF84T6F', // test
-        'welcome' => 'C2021K9FA',
+
+        'welcome' => 'C2021K9FA', // production
+        //'welcome' => 'C4Q962Q31', //test
+
         'bot_channel' => 'G20JEKWJU' // production
         //'bot_channel' => 'C5ESAU8CF' // test
     ];
     static $messageTemplates = [
-        'newUserMessageTemplate' => "Welcome, <@%s>! I hope you'll find lots of fun playing with us!\nBut please, check <https://docs.google.com/document/d/1KNM5OzEwtb7Dkgpsq-Hse4tTMcP0KMVFY1xk71s3prA|this document> first, in order to setup your profile according to our standards!\nHave fun!",
+        'newUserMessageTemplate' => "Welcome, <@%s>! I hope you'll find lots of fun playing with us!\nBut please, check <https://docs.google.com/document/d/1KNM5OzEwtb7Dkgpsq-Hse4tTMcP0KMVFY1xk71s3prA|THIS DOCUMENT> first, in order to setup your profile according to our standards!\nAlso, to get access to our super top secret files (documents, skins, etc), register on our specialised website <https://docs.google.com/document/d/1RczQPM9tfxhpm724GxgdYEzqRGBFvnmp_d9fxtrq2PQ/edit?usp=sharing|RIGHT HERE>.\nHave fun!",
         'warnMessageToAnnounce' => "Non-admin user <@%s> attempted to write a message in #announcements. Time: <!date^%s^{date_num} {time_secs}|Could Not Parse>. Message: \n>>> %s",
         'warnMessageToAnnouncePrivate' => ":no_entry_sign: Sorry, you have no rights to post in #announcements!\nIf you want to comment somehow, either start a sub-thread, or write in #general.\nYour message was:\n>>> %s"
     ];
