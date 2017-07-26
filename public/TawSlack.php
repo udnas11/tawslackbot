@@ -41,12 +41,12 @@ class TawSlack
         if ($response = self::execUrl($url))
         {
             $data = json_decode($response, true);
+            if ($data['ok'] != 'true')
+                self::log('error: ' . $data['error'], 'API');
             return $data;
         }
         return false;
     }
-
-    static public function callTawApi() {}
 
     static public function sendMessageToChannel($message, $channel)
     {
@@ -107,9 +107,40 @@ class TawSlack
         return $userInfo['is_admin'];
     }
 
+    static public function getChannelInfo($channelId)
+    {
+        $channelInfo = self::callSlackMethod('channels.info', ['channel' => $channelId]);
+        if ($channelInfo['ok'])
+        {
+            $channelData = $channelInfo['channel'];
+            return $channelData;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
     static public function deleteMessage($ts, $author, $channel)
     {
         self::callSlackMethod('chat.delete', ['ts' => $ts, 'author' => $author, 'channel' => $channel]);
+    }
+
+    static public function getImList()
+    {
+        $response = self::callSlackMethod('im.list');
+        if ($response != false && $response['ok'] == true)
+        {
+            $ims = $response['ims'];
+            /*
+            $imsIds = array();
+            foreach ($ims as $imInfo)
+                $imsIds[] = $imInfo['id'];
+            return $imsIds;
+            */
+            return $ims;
+        }
+        return false;
     }
 
     static public function getChannelList()
