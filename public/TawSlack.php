@@ -140,23 +140,6 @@ class TawSlack
         self::callSlackMethod('chat.delete', ['ts' => $ts, 'author' => $author, 'channel' => $channel]);
     }
 
-    static public function getImList()
-    {
-        $response = self::callSlackMethod('im.list');
-        if ($response != false && $response['ok'] == true)
-        {
-            $ims = $response['ims'];
-            /*
-            $imsIds = array();
-            foreach ($ims as $imInfo)
-                $imsIds[] = $imInfo['id'];
-            return $imsIds;
-            */
-            return $ims;
-        }
-        return false;
-    }
-
     static public function getChannelList()
     {
         $response = self::callSlackMethod('channels.list');
@@ -167,6 +150,17 @@ class TawSlack
             foreach ($channels as $channelInfo)
                 $channelIds[] = $channelInfo['id'];
             return $channelIds;
+        }
+        return false;
+    }
+
+    static public function getUserList()
+    {
+        $response = self::callSlackMethod('users.list');
+        if ($response != false && $response['ok'] == true)
+        {
+            $users = $response['members'];
+            return $users;
         }
         return false;
     }

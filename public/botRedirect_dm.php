@@ -19,7 +19,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
         $userTarget = explode(' ', $text)[0]; //including @ cause it needs it
         $actualText = substr($text, strlen($userTarget));
 
-        TawSlack::log("User (".$user_name.";".$user_id.") wrote personal message as TawBot. Input: ". $text, 'BotRedirectPersonal', 'logBotRedirect.txt');
+        TawSlack::log("User (".$user_name.";".$user_id.") wrote personal message as TawBot. Input: ". $text, 'BotRedirectDM', 'logBotRedirect.txt');
         $result = TawSlack::sendMessageToChannel($actualText, $userTarget);
         if ($result['ok'] == 'true')
             echo 'Done.';
