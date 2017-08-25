@@ -63,9 +63,9 @@ class TawSlack
         return self::sendMessageToChannel($message, Config::$channelIds['welcome']);
     }
 
-    static public function sendWarnMessageAttemptAnnounce($user, $message, $timestamp)
+    static public function sendWarnMessageAttemptAnnounce($user, $message, $channelName, $timestamp)
     {
-        $msg = sprintf(Config::$messageTemplates['warnMessageToAnnounce'], $user, $timestamp, $message);
+        $msg = sprintf(Config::$messageTemplates['warnMessageToAnnounce'], $user, $channelName, $timestamp, $message);
         TawSlack::log($msg, "AnnounceRestriction");
         return self::sendMessageToChannel($msg, Config::$channelIds['bot_channel']);
     }

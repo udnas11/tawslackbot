@@ -26,10 +26,15 @@ class Config
         'bot_channel' => 'G20JEKWJU' // production
         //'bot_channel' => 'C5ESAU8CF' // test
     ];
+    static $channelAdminIds = [
+        'announce' => 'C208Z2N4F',
+        '06_war_campaign' => 'C6TA29PHP',
+        'reapers_announce' => 'G209E5DRV'
+    ];
     static $messageTemplates = [
         'newUserMessageTemplate' => "Welcome, <@%s>! I hope you'll have lots of fun playing with us!\nBut please, check <https://docs.google.com/document/d/1KNM5OzEwtb7Dkgpsq-Hse4tTMcP0KMVFY1xk71s3prA|THIS DOCUMENT> first, in order to setup your profile according to our standards!\nAlso, to get access to our super top secret files (documents, skins, etc), register on our specialised website <https://docs.google.com/document/d/1RczQPM9tfxhpm724GxgdYEzqRGBFvnmp_d9fxtrq2PQ/edit?usp=sharing|RIGHT HERE>.\nHave fun!",
-        'warnMessageToAnnounce' => "Non-admin user <@%s> attempted to write a message in #announcements. Time: <!date^%s^{date_num} {time_secs}|Could Not Parse>. Message: \n>>> %s",
-        'warnMessageToAnnouncePrivate' => ":no_entry_sign: Sorry, you have no rights to post in #announcements!\nIf you want to comment somehow, either start a sub-thread, or write in #general.\nYour message was:\n>>> %s"
+        'warnMessageToAnnounce' => "Non-admin user <@%s> attempted to write a message in #%s. Time: <!date^%s^{date_num} {time_secs}|Could Not Parse>. Message: \n>>> %s",
+        'warnMessageToAnnouncePrivate' => ":no_entry_sign: Sorry, you have no rights to post in #%s!\nIf you want to leave a comment - start a sub-thread.\nYour message was:\n>>> %s"
     ];
     static $disgustInterval = 60 * 60; // 60m = 60s * 60;
     static $disgustTitles = ['War Thunder', ' BMS', 'Ace Combat', 'WarThunder', 'World of Warplanes', 'HAWX'];

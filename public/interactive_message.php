@@ -39,6 +39,12 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
             TawSlack::deleteOldFiles(60*60*24);
             echo 'Done clean-up';
         }
+        elseif ($actionName == 'getChannelGroupID')
+        {
+            $channelInfo = $input['channel'];
+            $channelID = $channelInfo['id'];
+            echo $channelID;
+        }
     }
     elseif ($callback_id == 'collapse')
     {

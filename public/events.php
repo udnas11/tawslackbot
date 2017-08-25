@@ -40,6 +40,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
 	}
 	elseif (isset($user))
     {
+        /*
         if ($channel == Config::$channelIds['announce'] && isset($event['thread_ts']) == false) //general/announce
         {
             //check if user is admin
@@ -51,6 +52,29 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
                 TawSlack::sendMessageToChannel(sprintf(Config::$messageTemplates['warnMessageToAnnouncePrivate'], $text), $user);
             }
         }
+        */
+
+        if (in_array($channel, Config::$channelAdminIds) && isset($event['thread_ts']) == false) // post to admin-only channel
+        {
+            //check if user is admin
+            $isAdmin = TawSlack::isUserAdmin($user);
+            if ($isAdmin == false)
+            {
+                TawSlack::deleteMessage($timeStamp, $user, $channel);
+
+                $channelInfo = TawSlack::getChannelInfo($channel);
+                if ($channelInfo == false)
+                    $channelInfo = TawSlack::getGroupInfo($channel);
+
+                if ($channelInfo != false)
+                {
+                    $channelName = $channelInfo['name'];
+                    TawSlack::sendWarnMessageAttemptAnnounce($user, $text, $channelName, $eventTime);
+                    TawSlack::sendMessageToChannel(sprintf(Config::$messageTemplates['warnMessageToAnnouncePrivate'], $channelName, $text), $user);
+                }
+            }
+        }
+
         if ($channel == Config::$channelIds['general'])
         {
             if (Config::GetConfig()->disgustResponsesEnabled)
