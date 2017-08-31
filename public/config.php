@@ -28,8 +28,7 @@ class Config
     ];
     static $channelAdminIds = [
         'announce' => 'C208Z2N4F',
-        '06_war_campaign' => 'C6TA29PHP',
-        'reapers_announce' => 'G209E5DRV'
+        '06_war_campaign' => 'C6TA29PHP'
     ];
     static $messageTemplates = [
         'newUserMessageTemplate' => "Welcome, <@%s>! I hope you'll have lots of fun playing with us!\nBut please, check <https://docs.google.com/document/d/1KNM5OzEwtb7Dkgpsq-Hse4tTMcP0KMVFY1xk71s3prA|THIS DOCUMENT> first, in order to setup your profile according to our standards!\nAlso, to get access to our super top secret files (documents, skins, etc), register on our specialised website <https://docs.google.com/document/d/1RczQPM9tfxhpm724GxgdYEzqRGBFvnmp_d9fxtrq2PQ/edit?usp=sharing|RIGHT HERE>.\nHave fun!",
