@@ -109,10 +109,19 @@ class TawSlack
 
     static public function isUserAdminOrBot($userId)
     {
+        TawSlack::log("Checking if admin");
+        if ($userId == 'USLACKBOT')
+            return true;
+
         $userInfo = self::getUserInfo($userId);
         if (!$userInfo)
             return false;
-        return $userInfo['is_admin'] || $userInfo['is_bot'];
+        TawSlack::log("isAdmin: " . $userInfo['is_admin']);
+        if (isset($userInfo['is_bot']))
+            TawSlack::log("isBot: " . $userInfo['is_bot']);
+        else
+            TawSlack::log("no param is_bot");
+        return !$userInfo['is_admin'] || $userInfo['is_bot'];
     }
 
     static public function getChannelInfo($channelId)
