@@ -57,7 +57,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
         if (in_array($channel, Config::$channelAdminIds) && isset($event['thread_ts']) == false) // post to admin-only channel
         {
             //check if user is admin
-            $isAdmin = TawSlack::isUserAdmin($user);
+            $isAdmin = TawSlack::isUserAdminOrBot($user);
             if ($isAdmin == false)
             {
                 TawSlack::deleteMessage($timeStamp, $user, $channel);

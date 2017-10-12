@@ -107,6 +107,14 @@ class TawSlack
         return $userInfo['is_admin'];
     }
 
+    static public function isUserAdminOrBot($userId)
+    {
+        $userInfo = self::getUserInfo($userId);
+        if (!$userInfo)
+            return false;
+        return $userInfo['is_admin'] || $userInfo['is_bot'];
+    }
+
     static public function getChannelInfo($channelId)
     {
         $channelInfo = self::callSlackMethod('channels.info', ['channel' => $channelId]);

@@ -31,7 +31,7 @@ class Config
         '06_war_campaign' => 'C6TA29PHP'
     ];
     static $messageTemplates = [
-        'newUserMessageTemplate' => "Welcome, <@%s>! I hope you'll have lots of fun playing with us!\nBut please, check <https://docs.google.com/document/d/1KNM5OzEwtb7Dkgpsq-Hse4tTMcP0KMVFY1xk71s3prA|THIS DOCUMENT> first, in order to setup your profile according to our standards!\nAlso, to get access to our super top secret files (documents, skins, etc), register on our specialised website <https://docs.google.com/document/d/1RczQPM9tfxhpm724GxgdYEzqRGBFvnmp_d9fxtrq2PQ/edit?usp=sharing|RIGHT HERE>.\nHave fun!",
+        'newUserMessageTemplate' => "Welcome, <@%s>! I hope you'll have lots of fun playing with us!\nBut first, *it is important* that you read <https://docs.google.com/document/d/1KNM5OzEwtb7Dkgpsq-Hse4tTMcP0KMVFY1xk71s3prA|THIS DOCUMENT> first and setup your profile according to our standards!\nAlso, to get access to our super top secret files (documents, skins, etc), register on our specialised website <https://docs.google.com/document/d/1RczQPM9tfxhpm724GxgdYEzqRGBFvnmp_d9fxtrq2PQ/edit?usp=sharing|RIGHT HERE>.\nHave fun!",
         'warnMessageToAnnounce' => "Non-admin user <@%s> attempted to write a message in #%s. Time: <!date^%s^{date_num} {time_secs}|Could Not Parse>. Message: \n>>> %s",
         'warnMessageToAnnouncePrivate' => ":no_entry_sign: Sorry, you have no rights to post in #%s!\nIf you want to leave a comment - start a sub-thread.\nYour message was:\n>>> %s"
     ];
@@ -69,91 +69,27 @@ class Config
         'SL' => ['EventReporting', 'TawDocs'],
         'SL-EU' => ['SlEuDoc'],
 
-        'PLF' => ['TawDocs'],
+        'PLF' => ['EventReporting', 'TawDocs'],
         'PLF-EU' => ['SlEuDoc'],
-        'PLS' => ['TawDocs'],
+        'PLS' => ['EventReporting', 'TawDocs'],
         'PLS-EU' => ['SlEuDoc'],
-        'PLR' => ['TawDocs'],
+        'PLR' => ['EventReporting', 'TawDocs'],
         'PLR-EU' => ['SlEuDoc'],
 
-        'FS' => ['MissionDesignDoc', 'DcsScriptingWiki', 'MooseDocumentation'],
+        'FS' => ['EventReporting', 'MissionDesignDoc', 'DcsScriptingWiki', 'MooseDocumentation'],
         'FS-EU' => ['SlEuDoc'],
 
-        'TS' => ['BadgeDocTable'],
+        'TS' => ['EventReporting', 'BadgeDocTable'],
         'TS-EU' => ['SlEuDoc'],
 
-        'XO' => ['TawDocs'],
+        'XO' => ['EventReporting', 'TawDocs'],
         'XO-EU' => ['SlEuDoc', 'XoEuRoster', 'SlBadges'],
 
-        'CO' => ['TawDocs', 'TawAcademyDrive'],
+        'CO' => ['EventReporting', 'TawDocs', 'TawAcademyDrive'],
         'CO-EU' => ['SlEuDoc'],
 
-        'DC' => ['SlEuDoc', 'TawDocs', 'XoEuRoster', 'SlBadges', 'TawAcademyDrive']
+        'DC' => ['EventReporting', 'SlEuDoc', 'TawDocs', 'XoEuRoster', 'SlBadges', 'TawAcademyDrive']
     ];
-    /*
-    static $actionsForRoles = [
-        // ----------------------
-        'PLF' => [
-            ['name' => 'SlEuDoc', 'text' => 'SL EU Meeting Doc', 'url' => 'https://docs.google.com/document/d/1HEQsci_uNBZnQsvNYm8_0VGw6YCOjZcH2V18NNFM_l0/edit'],
-            ['name' => 'TawDocs', 'text' => 'Taw General Folder', 'url' => 'https://drive.google.com/drive/u/1/folders/0BwdUUxV9p95AfjBrT0ExWTFsZjdCTl9oZW5yUmVweTJlNUg4MlVoZDQzX0ExTkt3eVdYd1E']
-        ],
-        'PLF-EU' => [
-            ['name' => 'SlEuDoc', 'text' => 'SL EU Meeting Doc', 'url' => 'https://docs.google.com/document/d/1HEQsci_uNBZnQsvNYm8_0VGw6YCOjZcH2V18NNFM_l0/edit']
-        ],
-        'PLS' => [
-            ['name' => 'SlEuDoc', 'text' => 'SL EU Meeting Doc', 'url' => 'https://docs.google.com/document/d/1HEQsci_uNBZnQsvNYm8_0VGw6YCOjZcH2V18NNFM_l0/edit'],
-            ['name' => 'TawDocs', 'text' => 'Taw General Folder', 'url' => 'https://drive.google.com/drive/u/1/folders/0BwdUUxV9p95AfjBrT0ExWTFsZjdCTl9oZW5yUmVweTJlNUg4MlVoZDQzX0ExTkt3eVdYd1E']
-        ],
-        'PLS-EU' => [
-            ['name' => 'SlEuDoc', 'text' => 'SL EU Meeting Doc', 'url' => 'https://docs.google.com/document/d/1HEQsci_uNBZnQsvNYm8_0VGw6YCOjZcH2V18NNFM_l0/edit']
-        ],
-        'PLR' => [
-            ['name' => 'SlEuDoc', 'text' => 'SL EU Meeting Doc', 'url' => 'https://docs.google.com/document/d/1HEQsci_uNBZnQsvNYm8_0VGw6YCOjZcH2V18NNFM_l0/edit'],
-            ['name' => 'TawDocs', 'text' => 'Taw General Folder', 'url' => 'https://drive.google.com/drive/u/1/folders/0BwdUUxV9p95AfjBrT0ExWTFsZjdCTl9oZW5yUmVweTJlNUg4MlVoZDQzX0ExTkt3eVdYd1E']
-        ],
-        'PLR-EU' => [
-            ['name' => 'SlEuDoc', 'text' => 'SL EU Meeting Doc', 'url' => 'https://docs.google.com/document/d/1HEQsci_uNBZnQsvNYm8_0VGw6YCOjZcH2V18NNFM_l0/edit']
-        ],
-
-        // ----------------------
-        'FS' => [
-            ['name' => 'MissionDesignDoc', 'text' => 'Mission Design Doc', 'url' => 'https://drive.google.com/file/d/0B4-zjL-PCMuvc1lHUjhLZWxLRmM/view?usp=sharing'],
-            ['name' => 'DcsScriptingWiki', 'text' => 'DCS Scripting Wiki', 'url' => 'http://wiki.hoggit.us/view/Simulator_Scripting_Engine_Documentation'],
-            ['name' => 'MooseDocumentation', 'text' => 'MOOSE Documentation', 'url' => 'http://flightcontrol-master.github.io/MOOSE/Documentation/index.html']
-        ],
-        'FS-EU' => [
-            ['name' => 'SlEuDoc', 'text' => 'SL EU Meeting Doc', 'url' => 'https://docs.google.com/document/d/1HEQsci_uNBZnQsvNYm8_0VGw6YCOjZcH2V18NNFM_l0/edit']
-        ],
-
-        // ----------------------
-        'XO' => [
-            ['name' => 'TawDocs', 'text' => 'Taw General Folder', 'url' => 'https://drive.google.com/drive/u/1/folders/0BwdUUxV9p95AfjBrT0ExWTFsZjdCTl9oZW5yUmVweTJlNUg4MlVoZDQzX0ExTkt3eVdYd1E']
-        ],
-        'XO-EU' => [
-            ['name' => 'SlEuDoc', 'text' => 'SL EU Meeting Doc', 'url' => 'https://docs.google.com/document/d/1HEQsci_uNBZnQsvNYm8_0VGw6YCOjZcH2V18NNFM_l0/edit'],
-            ['name' => 'XoEuRoster', 'text' => 'XO EU Roster Doc', 'url' => 'https://docs.google.com/spreadsheets/d/14u6v5BJoSroLy0U7QDz2z0IYySbYNT0OpLwe62cteUE/edit#gid=0'],
-            ['name' => 'SlBadges', 'text' => 'SL Badges Doc', 'url' => 'https://docs.google.com/spreadsheets/d/1uyLc6sVwcJnxF9ENj0EjazpsGw8ApBwaDhOF3l6b-WU/edit#gid=459234376']
-        ],
-
-        // ----------------------
-        'CO' => [
-            ['name' => 'SlEuDoc', 'text' => 'SL EU Meeting Doc', 'url' => 'https://docs.google.com/document/d/1HEQsci_uNBZnQsvNYm8_0VGw6YCOjZcH2V18NNFM_l0/edit'],
-            ['name' => 'TawDocs', 'text' => 'Taw General Folder', 'url' => 'https://drive.google.com/drive/u/1/folders/0BwdUUxV9p95AfjBrT0ExWTFsZjdCTl9oZW5yUmVweTJlNUg4MlVoZDQzX0ExTkt3eVdYd1E']
-        ],
-        'CO-EU' => [
-            ['name' => 'SlEuDoc', 'text' => 'SL EU Meeting Doc', 'url' => 'https://docs.google.com/document/d/1HEQsci_uNBZnQsvNYm8_0VGw6YCOjZcH2V18NNFM_l0/edit'],
-            ['name' => 'TawAcademyDrive', 'text' => 'Taw Academy Docs', 'url' => 'https://drive.google.com/drive/folders/0B9KA0xZYKRz7NmFYOVhMekh3U0E']
-        ],
-
-        // ----------------------
-        'DC' => [
-            ['name' => 'TawDocs', 'text' => 'Taw General Folder', 'url' => 'https://drive.google.com/drive/u/1/folders/0BwdUUxV9p95AfjBrT0ExWTFsZjdCTl9oZW5yUmVweTJlNUg4MlVoZDQzX0ExTkt3eVdYd1E'],
-            ['name' => 'SlEuDoc', 'text' => 'SL EU Meeting Doc', 'url' => 'https://docs.google.com/document/d/1HEQsci_uNBZnQsvNYm8_0VGw6YCOjZcH2V18NNFM_l0/edit'],
-            ['name' => 'XoEuRoster', 'text' => 'XO EU Roster Doc', 'url' => 'https://docs.google.com/spreadsheets/d/14u6v5BJoSroLy0U7QDz2z0IYySbYNT0OpLwe62cteUE/edit#gid=0'],
-            ['name' => 'SlBadges', 'text' => 'SL Badges Doc', 'url' => 'https://docs.google.com/spreadsheets/d/1uyLc6sVwcJnxF9ENj0EjazpsGw8ApBwaDhOF3l6b-WU/edit#gid=459234376'],
-            ['name' => 'TawAcademyDrive', 'text' => 'Taw Academy Docs', 'url' => 'https://drive.google.com/drive/folders/0B9KA0xZYKRz7NmFYOVhMekh3U0E']
-        ]
-    ];*/
 
     public static function getToken()
     {
