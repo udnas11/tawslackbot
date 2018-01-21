@@ -23,6 +23,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
 
         $userInfo = $input['user'];
         $userName = $userInfo['name'];
+        $userId = $userInfo['id'];
 
         if ($actionName == 'setDisgustResponses')
         {
@@ -44,6 +45,37 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
             $channelInfo = $input['channel'];
             $channelID = $channelInfo['id'];
             echo $channelID;
+        }
+        elseif ($actionName == 'inviteAllToChannel')
+        {
+            $channelInfo = $input['channel'];
+            $channelID = $channelInfo['id'];
+            $channelInfoCheck = TawSlack::getChannelInfo($channelID);
+            if ($channelInfoCheck == false)
+            {
+                echo "I'm sorry, " . $userName . ". I'm afraid I can't do that. This is not a public channel.";
+                return;
+            }
+            TawSlack::sendMessageToChannel('Inviting all users to channel <#' . $channelInfo['id'] . '> as requested by <@'.$userId.'>' , Config::$channelIds['bot_channel']);
+            TawSlack::sendMessageToChannel('Inviting all users to this channel as requested by <@'.$userId.'>', $channelID);
+            $userList = TawSlack::getUserList();
+            $invitedCount = 0;
+            $failedCount = 0;
+            foreach ($userList as $userInfoList)
+            {
+                if ($userInfoList['deleted'] == false && $userInfoList['id'] != 'USLACKBOT')
+                {
+                    $response = TawSlack::inviteUserToChannel($userInfoList['id'], $channelID);
+                    TawSlack::log($response['ok']);
+                    if ($response['ok'] == true)
+                        $invitedCount++;
+                    else if (in_array($response['error'], ['cant_invite_self', 'already_in_channel']) == false)
+                        $failedCount++;
+                }
+            }
+            TawSlack::sendMessageToChannel('Done inviting ' . $invitedCount . ' users to this channel.', $channelID);
+            TawSlack::sendMessageToChannel('Done inviting all users to channel. Success/fails: ' . $invitedCount . '/' . $failedCount , Config::$channelIds['bot_channel']);
+            echo 'Done mass-invite';
         }
     }
     elseif ($callback_id == 'collapse')

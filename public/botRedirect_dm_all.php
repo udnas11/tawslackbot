@@ -23,20 +23,23 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
         }
         else
         {
-            TawSlack::sendMessageToChannel("Starting mass broadcast of your message to all users. Ignore the timeout you got a few secs after invoking the command. I will have to send this to " . count($users) . " users. Will let you know when process is completed.", $user_id);
+            TawSlack::sendMessageToChannel("Starting mass broadcast of your message to all users. Ignore the timeout you got a few secs after invoking the command. Will let you know when process is completed.", $user_id);
             $success = 0;
             $failedUsernames = array();
             foreach ($users as $userInfo)
             {
-                $userTarget = "@" . $userInfo['name'];
-                $result = TawSlack::sendMessageToChannel($text, $userTarget);
-                if ($result['ok'] == 'true')
+                if ($userInfo['deleted'] == false)
                 {
-                    $success++;
-                }
-                else
-                {
-                    $failedUsernames[] = $userTarget;
+                    $userTarget = "@" . $userInfo['name'];
+                    $result = TawSlack::sendMessageToChannel($text, $userTarget);
+                    if ($result['ok'] == 'true')
+                    {
+                        $success++;
+                    }
+                    else
+                    {
+                        $failedUsernames[] = $userTarget;
+                    }
                 }
             }
             TawSlack::sendMessageToChannel("Successfully sent message to " . $success . " users.", $user_id);

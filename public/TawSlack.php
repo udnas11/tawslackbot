@@ -255,5 +255,10 @@ class TawSlack
         TawSlack::log('Done', 'FileDelete', 'log_fileDelete.txt');
         TawSlack::sendMessageToChannel('Done.', Config::$channelIds['bot_channel']);
     }
+
+    static public function inviteUserToChannel($userId, $channelId)
+    {
+        return self::callSlackMethod('channels.invite', ['user' => $userId, 'channel' => $channelId]);
+    }
 }
 
