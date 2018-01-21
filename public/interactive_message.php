@@ -66,7 +66,6 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
                 if ($userInfoList['deleted'] == false && $userInfoList['id'] != 'USLACKBOT')
                 {
                     $response = TawSlack::inviteUserToChannel($userInfoList['id'], $channelID);
-                    TawSlack::log($response['ok']);
                     if ($response['ok'] == true)
                         $invitedCount++;
                     else if (in_array($response['error'], ['cant_invite_self', 'already_in_channel']) == false)
