@@ -55,17 +55,39 @@ class Config
         ['name' => 'MandatoryExcuse', 'text' => 'Excuse from Mandatory', 'url' => 'http://taw.net/events/default.aspx?u=3046&c=1']
     ];
     static $actionsDictionary = [
-        'EventReporting' => ['text' => 'Event Reporting', 'url' => 'http://taw.net/event/ReportEvent.aspx'],
-        'TawDocs' => ['text' => 'Taw GDrive General Folder', 'url' => 'https://drive.google.com/drive/u/1/folders/0BwdUUxV9p95AfjBrT0ExWTFsZjdCTl9oZW5yUmVweTJlNUg4MlVoZDQzX0ExTkt3eVdYd1E'],
-        'SlEuDoc' => ['text' => 'SL EU Meeting Doc', 'url' => 'https://docs.google.com/document/d/1HEQsci_uNBZnQsvNYm8_0VGw6YCOjZcH2V18NNFM_l0/edit'],
-        'MissionDesignDoc' => ['text' => 'TAW Mission Design Doc', 'url' => 'https://drive.google.com/file/d/0B4-zjL-PCMuvc1lHUjhLZWxLRmM/view?usp=sharing'],
-        'DcsScriptingWiki' => ['text' => 'DCS Scripting Wiki', 'url' => 'http://wiki.hoggit.us/view/Simulator_Scripting_Engine_Documentation'],
-        'MooseDocumentation' => ['text' => 'MOOSE Documentation', 'url' => 'http://flightcontrol-master.github.io/MOOSE/Documentation/index.html'],
-        'XoEuRoster' => ['text' => 'XO EU Roster Doc', 'url' => 'https://docs.google.com/spreadsheets/d/14u6v5BJoSroLy0U7QDz2z0IYySbYNT0OpLwe62cteUE/edit#gid=0'],
-        'SlBadges' => ['text' => 'SL Badges Doc', 'url' => 'https://docs.google.com/spreadsheets/d/1uyLc6sVwcJnxF9ENj0EjazpsGw8ApBwaDhOF3l6b-WU/edit#gid=459234376'],
-        'TawAcademyDrive' => ['text' => 'Taw Academy Docs', 'url' => 'https://drive.google.com/drive/folders/0B9KA0xZYKRz7NmFYOVhMekh3U0E'],
-        'BadgeDocTable' => ['text' => 'Badge Doc Table', 'url' => 'https://docs.google.com/spreadsheets/d/1T42d8ktyZ9EM6guqv5oPshuBBLMLRh66UCCAfLazs1U/edit#gid=0'],
-        'TawDcsCommandMeeting' => ['text' => 'TAW DCS Command Meeting', 'url' => 'https://docs.google.com/document/d/126oo1AI3i6-jyJQ2M6bvT41o8Z-JzI2TiloqwwQZKEQ/edit']
+        'EventReporting' => [
+            'text' => 'Event Reporting',
+            'url' => 'http://taw.net/event/ReportEvent.aspx'],
+        'TawDocs' => [
+            'text' => 'Taw GDrive General Folder',
+            'url' => 'https://drive.google.com/drive/u/1/folders/0BwdUUxV9p95AfjBrT0ExWTFsZjdCTl9oZW5yUmVweTJlNUg4MlVoZDQzX0ExTkt3eVdYd1E'],
+        'SlEuDoc' => [
+            'text' => 'SL EU Meeting Doc',
+            'url' => 'https://docs.google.com/document/d/1HEQsci_uNBZnQsvNYm8_0VGw6YCOjZcH2V18NNFM_l0/edit'],
+        'MissionDesignDoc' => [
+            'text' => 'TAW Mission Design Doc',
+            'url' => 'https://drive.google.com/file/d/0B4-zjL-PCMuvc1lHUjhLZWxLRmM/view?usp=sharing'],
+        'DcsScriptingWiki' => [
+            'text' => 'DCS Scripting Wiki',
+            'url' => 'http://wiki.hoggit.us/view/Simulator_Scripting_Engine_Documentation'],
+        'MooseDocumentation' => [
+            'text' => 'MOOSE Documentation',
+            'url' => 'http://flightcontrol-master.github.io/MOOSE/Documentation/index.html'],
+        'EuRoster' => [
+            'text' => 'EU Roster Doc',
+            'url' => 'https://docs.google.com/spreadsheets/d/1CqJkhUcTiI8Lljt6-nppnnn1916UCwyV6qPOYw-AVfE/edit#gid=0'],
+        'SlOps' => [
+            'text' => 'Squadron Leader Ops',
+            'url' => 'https://docs.google.com/spreadsheets/d/1uyLc6sVwcJnxF9ENj0EjazpsGw8ApBwaDhOF3l6b-WU/edit#gid=459234376'],
+        'TawAcademyDrive' => [
+            'text' => 'Taw Academy Docs',
+            'url' => 'https://drive.google.com/drive/folders/0B9KA0xZYKRz7NmFYOVhMekh3U0E'],
+        'BadgeDocTable' => [
+            'text' => 'Badge Doc Table',
+            'url' => 'https://docs.google.com/spreadsheets/d/1T42d8ktyZ9EM6guqv5oPshuBBLMLRh66UCCAfLazs1U/edit#gid=0'],
+        'TawDcsCommandMeeting' => [
+            'text' => 'TAW DCS Command Meeting',
+            'url' => 'https://docs.google.com/document/d/126oo1AI3i6-jyJQ2M6bvT41o8Z-JzI2TiloqwwQZKEQ/edit']
     ];
     static $actionsPositions = [ //name from $actionsDictionary
         'SL' => ['EventReporting', 'TawDocs'],
@@ -84,13 +106,16 @@ class Config
         'TS' => ['EventReporting', 'BadgeDocTable'],
         'TS-EU' => ['SlEuDoc'],
 
+        'SO' => ['EventReporting', 'TawDocs'],
+        'SO-EU' => ['SlEuDoc', 'EuRoster', 'SlOps'],
+
         'XO' => ['EventReporting', 'TawDocs'],
-        'XO-EU' => ['SlEuDoc', 'XoEuRoster', 'SlBadges'],
+        'XO-EU' => ['SlEuDoc', 'EuRoster', 'SlOps'],
 
         'CO' => ['EventReporting', 'TawDocs', 'TawAcademyDrive', 'TawDcsCommandMeeting'],
-        'CO-EU' => ['SlEuDoc'],
+        'CO-EU' => ['SlEuDoc', 'EuRoster'],
 
-        'DC' => ['EventReporting', 'SlEuDoc', 'TawDocs', 'XoEuRoster', 'SlBadges', 'TawAcademyDrive']
+        'DC' => ['EventReporting', 'SlEuDoc', 'TawDocs', 'EuRoster', 'SlOps', 'TawAcademyDrive']
     ];
 
     public static function getToken()
