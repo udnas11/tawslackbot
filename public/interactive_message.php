@@ -35,8 +35,8 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
         }
         elseif ($actionName == 'runCleanupNow')
         {
-            TawSlack::log('Running forced clean-up! caller: '.$userName, 'FileDelete', 'log_fileDelete.txt');
-            TawSlack::sendMessageToChannel('Running forced file clean-up. User: '.$userName, Config::$channelIds['bot_channel']);
+            TawSlack::log('Running file clean-up! caller: '.$userName, 'FileDelete', 'log_fileDelete.txt');
+            TawSlack::sendMessageToChannel('Running file clean-up. Started by: '.$userName, Config::$channelIds['bot_channel']);
             TawSlack::deleteOldFiles(60*60*24);
             echo 'Done clean-up';
         }

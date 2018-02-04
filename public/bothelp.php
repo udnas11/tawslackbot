@@ -87,20 +87,12 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
         // ADMIN STUFF
 		if ($userInfo['is_admin'])
         {
-            $useDisgust = Config::GetConfig()->disgustResponsesEnabled;
-
-            $attAdmin['text'] = "Admin:\nIf you run forced clean-up, it will most likely answer you directly with an error. Ignore that. Look in #slackadmins channel instead for the result.";
+            $attAdmin['text'] = "Admin:\nFile cleanup and mass user invite will most likely yield you an timeout error. Ignore that.";
             $attAdmin['color'] = "#3AA3E3";
             $attAdmin['attachment_type'] = "default";
             $attAdmin['callback_id'] = "admin";
 
             $actions = array();
-            if ($useDisgust)
-                $button = new Button('setDisgustResponses', 'Disable Disgust Responses', 'false');
-            else
-                $button = new Button('setDisgustResponses', 'Enable Disgust Responses', 'true');
-            $actions[] = (array)$button;
-
             $button = new Button('runCleanupNow', 'Run Cleanup Now', '1');
             $actions[] = (array)$button;
 

@@ -2,10 +2,7 @@
 
 class CachedConfig
 {
-    public $lastDisgustTS = 0;
-    public $lastDisgustIndex = -1;
-    public $cleanUpFiles = true;
-    public $disgustResponsesEnabled = false;
+    public $botKickUser = 'none';
 }
 
 class Config
@@ -15,7 +12,7 @@ class Config
     static $tokenKey = 'TAWSLACKBOT_TOKEN';
     static $apiUrl = 'https://slack.com/api';
     static $channelIds = [
-        'announce' => 'C208Z2N4F',
+        'announce' => 'C208Z2N4F', // production
 
         'general' => 'C1SHP4Y4A', // production
         //'general' => 'C4PF84T6F', // test
@@ -31,19 +28,14 @@ class Config
         //'announce' => 'C5E4ZRYJZ', // test
         '06_war_campaign' => 'C6TA29PHP'
     ];
+    static $channelNoLeaveIds = [
+        'announce' => 'C208Z2N4F',
+        'member_recruits' => 'C4JH9KC4B'
+    ];
     static $messageTemplates = [
         'newUserMessageTemplate' => "Welcome, <@%s>! I hope you'll have lots of fun playing with us!\nBut first, *it is important* that you read <https://docs.google.com/document/d/1KNM5OzEwtb7Dkgpsq-Hse4tTMcP0KMVFY1xk71s3prA|THIS DOCUMENT> first and setup your profile according to our standards!\nAlso, to get access to our super top secret files (documents, skins, etc), register on our specialised website <https://docs.google.com/document/d/1RczQPM9tfxhpm724GxgdYEzqRGBFvnmp_d9fxtrq2PQ/edit?usp=sharing|RIGHT HERE>.\nHave fun!",
         'warnMessageToAnnounce' => "Non-admin user <@%s> attempted to write a message in <#%s>. Time: <!date^%s^{date_num} {time_secs}|Could Not Parse>. Message: \n>>> %s",
         'warnMessageToAnnouncePrivate' => ":no_entry_sign: Sorry, you have no rights to post in <#%s>!\nIf you want to leave a comment - start a sub-thread.\nYour message was:\n>>> %s"
-    ];
-    static $disgustInterval = 60 * 60; // 60m = 60s * 60;
-    static $disgustTitles = ['War Thunder', ' BMS', 'Ace Combat', 'WarThunder', 'World of Warplanes', 'HAWX'];
-    static $messageTemplatesDisgust = [
-        'I am disgusted! How dare you mention %1$s?!?',
-        'You have sinned, <@%2$s>! %1$s is Devil\'s work! Go play DCS for at least 2 hours to purge your soul!',
-        'No, <@%2$s>, no.. now that\'s a bad word! We don\'t use %1$s in this house!',
-        'Well.. at least %1$s doesn\'t crash that often..'
-        //todo "At least BMS has good missiles" for bms only
     ];
 
     static $actionsDefault = [
@@ -90,7 +82,7 @@ class Config
             'url' => 'https://docs.google.com/document/d/126oo1AI3i6-jyJQ2M6bvT41o8Z-JzI2TiloqwwQZKEQ/edit']
     ];
     static $actionsPositions = [ //name from $actionsDictionary
-        'SL' => ['EventReporting', 'TawDocs'],
+        'SL' => ['EventReporting'],
         'SL-EU' => ['SlEuDoc'],
 
         'PLF' => ['EventReporting', 'TawDocs'],

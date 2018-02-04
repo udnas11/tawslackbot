@@ -37,23 +37,28 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
                 TawSlack::sendWelcomeMessage($user);
 			}
 		}
+		elseif ($subtype == "channel_leave")
+        {
+            if (in_array($channel, Config::$channelNoLeaveIds)) //no leave channel
+            {
+                if ($user == Config::GetConfig()->botKickUser)
+                {
+                    Config::GetConfig()->botKickUser = 'none';
+                    Config::FlushConfig();
+                    TawSlack::log('User successfully kicked from No-Leave channel');
+                }
+                else
+                {
+                    TawSlack::log(sprintf('User %s attempted to leave no-leave channel %s', $user, $channel));
+                    TawSlack::sendMessageToChannel(sprintf("Only admins can remove people from this channel.\nI'm sorry, <@%s>. I can't let you leave.", $user), $channel);
+                    TawSlack::inviteUserToChannel($user, $channel);
+                    TawSlack::sendMessageToChannel(sprintf("User <@%s> attempted to leave no-leave channel <#%s>. Adding him back in there.\nIf you're an admin and want to remove someone from a no-leave channel use command `/botKick @user`", $user, $channel), Config::$channelIds['bot_channel']);
+                }
+            }
+        }
 	}
 	elseif (isset($user))
     {
-        /*
-        if ($channel == Config::$channelIds['announce'] && isset($event['thread_ts']) == false) //general/announce
-        {
-            //check if user is admin
-            $isAdmin = TawSlack::isUserAdmin($user);
-            if ($isAdmin == false)
-            {
-                TawSlack::deleteMessage($timeStamp, $user, $channel);
-                TawSlack::sendWarnMessageAttemptAnnounce($user, $text, $eventTime);
-                TawSlack::sendMessageToChannel(sprintf(Config::$messageTemplates['warnMessageToAnnouncePrivate'], $text), $user);
-            }
-        }
-        */
-
         if (in_array($channel, Config::$channelAdminIds) && isset($event['thread_ts']) == false) // post to admin-only channel
         {
             //check if user is admin
@@ -68,32 +73,9 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
 
                 if ($channelInfo != false)
                 {
-                    $channelId = $channelInfo['id'];
-                    TawSlack::sendWarnMessageAttemptAnnounce($user, $text, $channelId, $eventTime);
-                    TawSlack::sendMessageToChannel(sprintf(Config::$messageTemplates['warnMessageToAnnouncePrivate'], $channelId, $text), $user);
-                }
-            }
-        }
-
-        if ($channel == Config::$channelIds['general'])
-        {
-            if (Config::GetConfig()->disgustResponsesEnabled)
-            {
-                foreach (Config::$disgustTitles as $title)
-                {
-                    if (stripos($text, $title) !== false)
-                    {
-                        $deltaTimeStamp = $timeStamp - Config::GetConfig()->lastDisgustTS; // in seconds
-                        TawSlack::log('disgust delta: ' . $deltaTimeStamp . ' out of ' . Config::$disgustInterval, 'Disgust');
-                        if ($deltaTimeStamp > Config::$disgustInterval)
-                        {
-                            TawSlack::log("should disgust", 'Disgust');
-                            Config::GetConfig()->lastDisgustTS = $timeStamp;
-                            Config::FlushConfig();
-                            TawSlack::sendDisgustMessage($title, $user);
-                        }
-                        break;
-                    }
+                    $channel = $channelInfo['id'];
+                    TawSlack::sendWarnMessageAttemptAnnounce($user, $text, $channel, $eventTime);
+                    TawSlack::sendMessageToChannel(sprintf(Config::$messageTemplates['warnMessageToAnnouncePrivate'], $channel, $text), $user);
                 }
             }
         }

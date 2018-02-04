@@ -70,21 +70,6 @@ class TawSlack
         return self::sendMessageToChannel($msg, Config::$channelIds['bot_channel']);
     }
 
-    static public function sendDisgustMessage($title, $user)
-    {
-        $config = Config::GetConfig();
-        do
-        {
-            $index = array_rand(Config::$messageTemplatesDisgust);
-        }
-        while ($index == $config->lastDisgustIndex);
-        $config->lastDisgustIndex = $index;
-        Config::FlushConfig();
-
-        $msg = sprintf(Config::$messageTemplatesDisgust[$index], $title, $user);
-        return self::sendMessageToChannel($msg, Config::$channelIds['general']);
-    }
-
     static public function getUserInfo($userId)
     {
         $userInfo = self::callSlackMethod('users.info', ['user' => $userId]);
@@ -237,7 +222,6 @@ class TawSlack
     static public function deleteOldFiles($minimumTimestampDelta)
     {
         TawSlack::log('Attempt delete files older than ' . $minimumTimestampDelta . ' seconds', 'FileDelete', 'log_fileDelete.txt');
-        TawSlack::sendMessageToChannel('Running scheduled file clean-up.', Config::$channelIds['bot_channel']);
 
         $fileIdList = self::getFileListTotal($minimumTimestampDelta);
         $fileCountTotal = count($fileIdList);
@@ -259,6 +243,11 @@ class TawSlack
     static public function inviteUserToChannel($userId, $channelId)
     {
         return self::callSlackMethod('channels.invite', ['user' => $userId, 'channel' => $channelId]);
+    }
+
+    static public function kickUserFromChannel($userId, $channelId)
+    {
+        return self::callSlackMethod('channels.kick', ['user' => $userId, 'channel' => $channelId]);
     }
 }
 
