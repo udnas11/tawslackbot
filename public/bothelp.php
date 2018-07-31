@@ -23,19 +23,22 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
 		$responseText = "Hi there, " . $userLastName . "!\nThere are a couple of links that you might find useful:\n";
 		$responseText .= GetNavUrlsGeneral();
         $specialRole = false;
-        foreach (Config::$actionsPositions as $role => $actionKey)
+        if ($userInfo['is_admin'])
         {
-            if (stripos($userFirstName, $role) !== false)
+            foreach (Config::$actionsPositions as $role => $actionKey)
             {
-                if ($specialRole == false)
+                if (stripos($userFirstName, $role) !== false)
                 {
-                    $responseText .= "Also here are a few links specifically for your position in TAW: \n";
-                    $specialRole = true;
+                    if ($specialRole == false)
+                    {
+                        $responseText .= "Also here are a few links specifically for your position in TAW: \n";
+                        $specialRole = true;
+                    }
+                    $responseText .= GetNavUrlsForPosition($role);
                 }
-                $responseText .= GetNavUrlsForPosition($role);
             }
+            $responseText .= "Want something more to be included? Contact AlephRo for that.";
         }
-		$responseText .= "Want something more to be included? Contact AlephRo for that.";
 
 		$response['text'] = $responseText;
 

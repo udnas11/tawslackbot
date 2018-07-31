@@ -26,11 +26,11 @@ class Config
     static $channelAdminIds = [
         'announce' => 'C208Z2N4F', // production
         //'announce' => 'C5E4ZRYJZ', // test
-        '06_war_campaign' => 'C6TA29PHP'
     ];
     static $channelNoLeaveIds = [
         'announce' => 'C208Z2N4F',
-        'member_recruits' => 'C4JH9KC4B'
+        'member_recruits' => 'C4JH9KC4B',
+        '06want_to_fly_now' => 'CC01C7U7Q'
     ];
     static $messageTemplates = [
         'newUserMessageTemplate' => "Welcome, <@%s>! I hope you'll have lots of fun playing with us!\nBut first, *it is important* that you read <https://docs.google.com/document/d/1KNM5OzEwtb7Dkgpsq-Hse4tTMcP0KMVFY1xk71s3prA|THIS DOCUMENT> first and setup your profile according to our standards!\nAlso, to get access to our super top secret files (documents, skins, etc), register on our specialised website <https://docs.google.com/document/d/1RczQPM9tfxhpm724GxgdYEzqRGBFvnmp_d9fxtrq2PQ/edit?usp=sharing|RIGHT HERE>.\nHave fun!",
@@ -44,12 +44,10 @@ class Config
         ['name' => 'GoKO', 'text' => 'Kaucasus Offensive', 'url' => 'http://ko.tawdcs.org/'],
         ['name' => 'GoMembersSection', 'text' => 'Members Section', 'url' => 'https://tawdcs.org/sop/'],
         ['name' => 'GoSrsFreqs', 'text' => 'SRS Frequencies', 'url' => 'https://docs.google.com/document/d/1U4fe7EhdJ73F2ojMsXt7yOFxAoHd8OIH1Iv6OuPTSuc/edit'],
-        ['name' => 'MandatoryExcuse', 'text' => 'Excuse from Mandatory', 'url' => 'http://taw.net/events/default.aspx?u=3046&c=1']
+        ['name' => 'MandatoryExcuse', 'text' => 'Excuse from Mandatory', 'url' => 'http://taw.net/events/default.aspx?u=3046&c=1'],
+        ['name' => 'EventReporting', 'text' => 'Report an Event', 'url' => 'http://taw.net/event/ReportEvent.aspx']
     ];
     static $actionsDictionary = [
-        'EventReporting' => [
-            'text' => 'Event Reporting',
-            'url' => 'http://taw.net/event/ReportEvent.aspx'],
         'TawDocs' => [
             'text' => 'Taw GDrive General Folder',
             'url' => 'https://drive.google.com/drive/u/1/folders/0BwdUUxV9p95AfjBrT0ExWTFsZjdCTl9oZW5yUmVweTJlNUg4MlVoZDQzX0ExTkt3eVdYd1E'],
@@ -82,32 +80,29 @@ class Config
             'url' => 'https://docs.google.com/document/d/126oo1AI3i6-jyJQ2M6bvT41o8Z-JzI2TiloqwwQZKEQ/edit']
     ];
     static $actionsPositions = [ //name from $actionsDictionary
-        'SL' => ['EventReporting'],
-        'SL-EU' => ['SlEuDoc'],
-
-        'PLF' => ['EventReporting', 'TawDocs'],
+        'PLF' => ['TawDocs'],
         'PLF-EU' => ['SlEuDoc'],
-        'PLS' => ['EventReporting', 'TawDocs'],
+        'PLS' => ['TawDocs'],
         'PLS-EU' => ['SlEuDoc'],
-        'PLR' => ['EventReporting', 'TawDocs'],
+        'PLR' => ['TawDocs'],
         'PLR-EU' => ['SlEuDoc'],
 
-        'FS' => ['EventReporting', 'MissionDesignDoc', 'DcsScriptingWiki', 'MooseDocumentation'],
+        'FS' => ['MissionDesignDoc', 'DcsScriptingWiki', 'MooseDocumentation'],
         'FS-EU' => ['SlEuDoc'],
 
-        'TS' => ['EventReporting', 'BadgeDocTable'],
+        'TS' => ['BadgeDocTable'],
         'TS-EU' => ['SlEuDoc'],
 
-        'SO' => ['EventReporting', 'TawDocs'],
+        'SO' => ['TawDocs'],
         'SO-EU' => ['SlEuDoc', 'EuRoster', 'SlOps'],
 
-        'XO' => ['EventReporting', 'TawDocs'],
+        'XO' => ['TawDocs'],
         'XO-EU' => ['SlEuDoc', 'EuRoster', 'SlOps'],
 
-        'CO' => ['EventReporting', 'TawDocs', 'TawAcademyDrive', 'TawDcsCommandMeeting'],
+        'CO' => ['TawDocs', 'TawAcademyDrive', 'TawDcsCommandMeeting'],
         'CO-EU' => ['SlEuDoc', 'EuRoster'],
 
-        'DC' => ['EventReporting', 'SlEuDoc', 'TawDocs', 'EuRoster', 'SlOps', 'TawAcademyDrive']
+        'DC' => ['SlEuDoc', 'TawDocs', 'EuRoster', 'SlOps', 'TawAcademyDrive']
     ];
 
     public static function getToken()
