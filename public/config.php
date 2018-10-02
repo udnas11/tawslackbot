@@ -53,7 +53,7 @@ class Config
             'url' => 'https://drive.google.com/drive/u/1/folders/0BwdUUxV9p95AfjBrT0ExWTFsZjdCTl9oZW5yUmVweTJlNUg4MlVoZDQzX0ExTkt3eVdYd1E'],
         'SlEuDoc' => [
             'text' => 'SL EU Meeting Doc',
-            'url' => 'https://docs.google.com/document/d/1HEQsci_uNBZnQsvNYm8_0VGw6YCOjZcH2V18NNFM_l0/edit'],
+            'url' => 'https://docs.google.com/document/d/1mxKJ92hCBL6ynj_Nx9ayXb9ipcEYpAqq17lfsPf71Ow/edit'],
         'MissionDesignDoc' => [
             'text' => 'TAW Mission Design Doc',
             'url' => 'https://drive.google.com/file/d/0B4-zjL-PCMuvc1lHUjhLZWxLRmM/view?usp=sharing'],
