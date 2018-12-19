@@ -25,7 +25,7 @@ class Config
     ];
     static $channelAdminIds = [
         'announce' => 'C208Z2N4F', // production
-        //'announce' => 'C5E4ZRYJZ', // test
+        '88brefing' => 'GEP2Z0PU2'
     ];
     static $channelNoLeaveIds = [
         'announce' => 'C208Z2N4F',
