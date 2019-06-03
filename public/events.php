@@ -74,7 +74,8 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
                 if ($channelInfo != false)
                 {
                     $channel = $channelInfo['id'];
-                    TawSlack::sendWarnMessageAttemptAnnounce($user, $text, $channel, $eventTime);
+                    if (in_array($channel, Config::$channelAdminIdsSilent) == false)
+                        TawSlack::sendWarnMessageAttemptAnnounce($user, $text, $channel, $eventTime);
                     TawSlack::sendMessageToChannel(sprintf(Config::$messageTemplates['warnMessageToAnnouncePrivate'], $channel, $text), $user);
                 }
             }

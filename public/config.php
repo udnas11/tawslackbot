@@ -26,7 +26,11 @@ class Config
     static $channelAdminIds = [
         'announce' => 'C208Z2N4F', // production
         '88brefing' => 'GEP2Z0PU2',
-        '88announce' => 'GFMEPGWTC'
+        '88announce' => 'GFMEPGWTC',
+        'reaper_annon' => "GE6R3J1JS"
+    ];
+    static $channelAdminIdsSilent = [
+        'reaper_annon' => "GE6R3J1JS"
     ];
     static $channelNoLeaveIds = [
         'announce' => 'C208Z2N4F'
