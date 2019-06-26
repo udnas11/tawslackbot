@@ -76,6 +76,39 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
             TawSlack::sendMessageToChannel('Done inviting all users to channel. Success/fails: ' . $invitedCount . '/' . $failedCount , Config::$channelIds['bot_channel']);
             echo 'Done mass-invite';
         }
+        elseif ($actionName == 'inviteAllEUToChannel')
+        {
+            $channelInfo = $input['channel'];
+            $channelID = $channelInfo['id'];
+            // $channelInfoCheck = TawSlack::getChannelInfo($channelID);
+            // if ($channelInfoCheck == false)
+            // {
+            //     echo "I'm sorry, " . $userName . ". I'm afraid I can't do that. This is not a public channel.";
+            //     return;
+            // }
+            TawSlack::sendMessageToChannel('Inviting all EU users to channel <#' . $channelInfo['id'] . '> as requested by <@'.$userId.'>' , Config::$channelIds['bot_channel']);
+            TawSlack::sendMessageToChannel('Inviting all EU users to this channel as requested by <@'.$userId.'>', $channelID);
+            $userList = TawSlack::getUserList();
+            $invitedCount = 0;
+            $failedCount = 0;
+            foreach ($userList as $userInfoList)
+            {
+                if ($userInfoList['deleted'] == false && $userInfoList['id'] != 'USLACKBOT')
+                {
+                    if ((strpos($userInfoList['real_name'], '-EU]') !== false))
+                    {
+                        $response = TawSlack::inviteUserToChannel($userInfoList['id'], $channelID);
+                        if ($response['ok'] == true)
+                            $invitedCount++;
+                        else if (in_array($response['error'], ['cant_invite_self', 'already_in_channel']) == false)
+                            $failedCount++;
+                    }
+                }
+            }
+            TawSlack::sendMessageToChannel('Done inviting ' . $invitedCount . ' EU users to this channel.', $channelID);
+            TawSlack::sendMessageToChannel('Done inviting all EU users to channel. Success/fails: ' . $invitedCount . '/' . $failedCount , Config::$channelIds['bot_channel']);
+            echo 'Done EU mass-invite';
+        }
     }
     elseif ($callback_id == 'collapse')
     {

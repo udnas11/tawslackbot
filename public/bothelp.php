@@ -105,6 +105,9 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
             $button = new Button('inviteAllToChannel', 'Invite All To Channel', '1');
             $actions[] = (array)$button;
 
+            $button = new Button('inviteAllEUToChannel', 'Invite All EU To Channel', '1');
+            $actions[] = (array)$button;
+
             $attAdmin['actions'] = $actions;
             $response['attachments'][] = $attAdmin;
         }
