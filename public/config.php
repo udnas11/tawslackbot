@@ -69,8 +69,11 @@ class Config
             'text' => 'MOOSE Documentation',
             'url' => 'http://flightcontrol-master.github.io/MOOSE/Documentation/index.html'],
         'EuRoster' => [
-            'text' => 'EU Roster Doc',
+            'text' => 'EU SO Roster Doc',
             'url' => 'https://docs.google.com/spreadsheets/d/1CqJkhUcTiI8Lljt6-nppnnn1916UCwyV6qPOYw-AVfE/edit#gid=0'],
+        'RecruitStatus' => [
+            'text' => 'Division Recruitment Info',
+            'url' => 'https://docs.google.com/spreadsheets/d/19xkhhJ4HG4cGV2O5KWmEd59rG29Z8UuzJcHIXnGC3OQ/edit?usp=sharing'],
         'SlOps' => [
             'text' => 'Squadron Leader Ops',
             'url' => 'https://docs.google.com/spreadsheets/d/1uyLc6sVwcJnxF9ENj0EjazpsGw8ApBwaDhOF3l6b-WU/edit#gid=459234376'],
@@ -101,13 +104,15 @@ class Config
         'SO' => ['TawDocs'],
         'SO-EU' => ['SlEuDoc', 'EuRoster', 'SlOps'],
 
-        'XO' => ['TawDocs'],
+        'XO' => ['TawDocs', 'RecruitStatus'],
         'XO-EU' => ['SlEuDoc', 'EuRoster', 'SlOps'],
 
-        'CO' => ['TawDocs', 'TawAcademyDrive', 'TawDcsCommandMeeting'],
+        'CO' => ['TawDocs', 'TawAcademyDrive', 'TawDcsCommandMeeting', 'RecruitStatus'],
         'CO-EU' => ['SlEuDoc', 'EuRoster'],
 
-        'DC' => ['SlEuDoc', 'TawDocs', 'EuRoster', 'SlOps', 'TawAcademyDrive']
+        'DO' => ['SlEuDoc', 'TawDocs', 'EuRoster', 'SlOps', 'TawAcademyDrive', 'RecruitStatus'],
+
+        'DC' => ['SlEuDoc', 'TawDocs', 'EuRoster', 'SlOps', 'TawAcademyDrive', 'RecruitStatus']
     ];
 
     public static function getToken()
