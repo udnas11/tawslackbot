@@ -29,12 +29,7 @@ class Config
         'reaper_annon' => "GE6R3J1JS"
     ];
     static $channelNoLeaveIds = [
-        'announce' => 'C208Z2N4F',
-        'EUannounce' => 'CKKNFDH4J',
-        'EUgeneral' => 'CKKNHNDC2',
-        '88brefing' => 'GEP2Z0PU2',
-        '88announce' => 'GFMEPGWTC',
-        'NAannounce' => 'GNG6R55TK'
+        'announce' => 'C208Z2N4F'
     ];
     static $messageTemplates = [
         //'newUserMessageTemplate' => "Welcome, <@%s>! I hope you'll have lots of fun playing with us!\nBut first, *it is important* that you read <https://docs.google.com/document/d/1KNM5OzEwtb7Dkgpsq-Hse4tTMcP0KMVFY1xk71s3prA|THIS DOCUMENT> first and setup your profile according to our standards!\nAlso, to get access to our super top secret files (documents, skins, etc), register on our specialised website <https://docs.google.com/document/d/1RczQPM9tfxhpm724GxgdYEzqRGBFvnmp_d9fxtrq2PQ/edit?usp=sharing|RIGHT HERE>.\nHave fun!",
