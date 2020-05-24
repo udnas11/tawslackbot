@@ -21,12 +21,14 @@ class Config
         'announce' => 'C208Z2N4F', // production
         '88brefing' => 'GEP2Z0PU2',
         '88announce' => 'GFMEPGWTC',
-        'reaper_annon' => "GE6R3J1JS",
+        // 'reaper_annon' => "GE6R3J1JS",
+        'aew_annon' => "G0107NX2Z4Z",
         'EUannounce' => 'CKKNFDH4J',
         'NAannounce' => 'GNG6R55TK'
     ];
     static $channelAdminIdsSilent = [
-        'reaper_annon' => "GE6R3J1JS"
+        //'reaper_annon' => "GE6R3J1JS"
+        'aew_annon' => "G0107NX2Z4Z"
     ];
     static $channelNoLeaveIds = [
         'announce' => 'C208Z2N4F'
